@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta Tag -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Profile Style -->
+    <link rel="stylesheet" href="../static/static/profile.css"> 
+    <!-- shared-ui -->
+    <link rel="stylesheet" href="../static/static/shared-ui.css">
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="../static/static/all.min.css">
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <!-- Favicon  -->
+    <!-- <link rel="icon" href="../assets/images/favicon-16x16.png" sizes="16x16"> -->
+    <!-- Title -->
+    <title>Profile</title>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Start NavBar -->
+        <nav class="navbar">
+            <div class="nav-icon" onclick="toggleSidebar()">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="navbar-right">
+                <a href="#">
+                    <img src="../static/images/manager.png" alt="img" width="30" >
+                    <div class="account">
+                        <span>Ahmed Mhd</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </a>
+            </div>
+        </nav>
+        <!-- End NavBar -->
+
+        <!-- Start Main -->
+        <main>
+            <div class="main-container">
+                <!-- Start Profile Info -->
+                <div class="profile-info">
+                    <div class="user-img">
+                        <img src="../static/images/account-img.jpg" alt="account-img">
+                    </div>
+                    <h2>Ahmed Mohammed</h2>
+                    <p>Font End & Back End</p>
+                    <a href="#" class="edit-profile-btn">Edit Profile</a>
+                </div>
+                <!-- End Profile Info -->
+
+                <!-- Start Tabs -->
+                <div class="tabs-container">
+                    <div class="tabs">
+                        <a
+                         role="button" 
+                         tabindex="0" 
+                         class="active"
+                         onclick="openTap(event, 'tab1')"
+                        >Under Work</a>
+                        <a role="button" tabindex="0" onclick="openTap(event, 'tab2')">Previous works</a>
+                        <a role="button" tabindex="0" onclick="openTap(event, 'tab3')">Rating</a>
+                        <a role="button" tabindex="0" onclick="openTap(event, 'tab4')">About</a>
+                    </div>
+                </div>
+
+                <!-- Start Tab Content -->               
+                <div class="tabContent" id="tab1">
+                    <h3>Under Work</h3>
+                </div>
+                <div class="tabContent" id="tab2">
+                    <h3>Previous works</h3>
+                </div>
+
+                <!-- START RATING -->
+                <div class="tabContent rating-container" id="tab3">
+                    <div class="rating-number">
+                        <p>4.5</p>
+                    </div>
+                    <div class="rating-card">
+                        <div class="rating-stars">
+                            <h4>Rating</h4>
+                            <ul class="stars">
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="review-content">
+                        <h4>Review</h4>
+                        <div class="review-card">
+                            <div class="review-title">
+                                <h5>Case Name</h5>
+                                <div class="case-date">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <p>10/1/2021</p>
+                                </div>
+                            </div>
+                            <p class="p-review">
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+                            </p>
+                            <ul class="stars">
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                            </ul>
+                        </div>
+                        <div class="review-card">
+                            <div class="review-title">
+                                <h5>Case Name</h5>
+                                <div class="case-date">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <p>10/1/2021</p>
+                                </div>
+                            </div>
+                            <p class="p-review">
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+                            </p>
+                            <ul class="stars">
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                            </ul>
+                        </div>
+                        <div class="review-card">
+                            <div class="review-title">
+                                <h5>Case Name</h5>
+                                <div class="case-date">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <p>10/1/2021</p>
+                                </div>
+                            </div>
+                            <p class="p-review">
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+                            </p>
+                            <ul class="stars">
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                            </ul>
+                        </div>
+                        <div class="review-card">
+                            <div class="review-title">
+                                <h5>Case Name</h5>
+                                <div class="case-date">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <p>10/1/2021</p>
+                                </div>
+                            </div>
+                            <p class="p-review">
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+                            </p>
+                            <ul class="stars">
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- END RATING -->
+
+                <!-- START ABOUT -->
+                <div class="tabContent about-container" id="tab4">
+                    <div class="description">
+                        <h4>Description</h4>
+                        <div class="description-box">
+                            <p>
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+                                Lorem Ipsum is simply dummy text of the printing and 
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="contact">
+                        <h4>Contact</h4>
+                        <div class="contact-card">
+                            <div class="location card">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <p>Iraq, Baghdad</p>
+                            </div>
+                            <div class="email card">
+                                <i class="fas fa-envelope"></i>
+                                <p>ahmed@gmail.com</p>
+                            </div>
+                            <div class="phone card">
+                                <i class="fas fa-phone"></i>
+                                <p>+009343235</p>
+                            </div>
+                            <div class="social card">
+                                <a href="#"><i class="fab fa-facebook-square"></i></a>
+                                <a href="#"><i class="fab fa-twitter-square"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="services">
+                        <h4>Services</h4>
+                        <div class="services-card">
+                            <div class="card">
+                                <p>Front End</p>
+                            </div>
+                            <div class="card">
+                                <p>Back End</p>
+                            </div>
+                            <div class="card">
+                                <p>UI & UX</p>
+                            </div>
+                            <div class="card">
+                                <p>Database</p>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+
+                    <!-- Clear -->
+                    <div class="services">
+                        <h4>Services</h4>
+                        <div class="services-card">
+                            <div class="card">
+                                <p>Json</p>
+                            </div>
+                            <div class="card">
+                                <p>Laravel</p>
+                            </div>
+                            <div class="card">
+                                <p>PHP</p>
+                            </div>
+                            <div class="card">
+                                <p>JavaScript</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- END ABOUT -->
+
+
+                <!-- <div class="container">
+                    <div class="box">
+                        <form action="">
+                            <label for="Username"></label>
+                            <input type="text" placeholder="Email">
+                            <label for="Username"></label>
+                            <input type="text" placeholder="***********">
+                            <label for="Username"></label>
+                            <input type="text">
+                        </form>
+                    </div>
+                </div> -->
+
+                <!-- End Tab Content -->
+
+
+ 
+
+                <!-- End Tabs -->
+            </div>
+        </main>
+        <!-- End Main -->
+
+        <!-- Start Sidebar -->
+        <div id="sidebar">
+            <div class="sidebar-title">
+                <h2>Business by design</h2>
+                <i
+                  onclick="closeSidebar()"
+                  class="fa fa-times"
+                  id="sidebarIcon"
+                  aria-hidden="true"
+                ></i>
+            </div>
+
+            <section class="sidebar-menu">
+                <div class="sidebar-link active-menu-link">
+                    <i class="fa fa-home"></i>
+                    <a href="/">Dashboard</a>
+                </div>
+                <div class="sidebar-link">
+                    <i class="far fa-building"></i>
+                    <a href="/company">Company</a>
+                </div>
+                <div class="sidebar-link">
+                    <i class="fas fa-igloo"></i>
+                    <a href="/freelancers">Freelancers</a>
+                </div>
+                <div class="sidebar-link">
+                    <i class="fas fa-users"></i>
+                    <a href="#">Employees</a>
+                </div>
+                <div class="sidebar-link">
+                    <i class="fas fa-calendar-alt"></i>
+                    <a href="#">Calender</a>
+                </div>
+                <div class="sidebar-link">
+                    <i class="fas fa-user-plus"></i>
+                    <a href="/register">Register</a>
+                </div>
+                <div class="sidebar-link">
+                    <i class="fas fa-cog"></i>
+                    <a href="#">Settings</a>
+                </div>
+            </section>
+        </div>
+        <!-- End Sidebar -->
+
+
+    </div>
+
+    <script src="../static/js/js2.js"></script> 
+</body>
+</html>

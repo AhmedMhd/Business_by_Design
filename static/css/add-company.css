@@ -1,0 +1,72 @@
+:root {
+    --darkBlue: #0C1427;
+    --mainContent: #F8F9FB;
+    --lightPurple:  #727CF5;
+    --lightRed:  #FF3366;
+    --barsColor: #97A3B9;
+    --yellow: #FBBC06;
+}
+
+.form-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    color: var(--lightPurple);
+}
+
+input {
+    width: 300px;
+    padding: 10px;
+    margin-bottom: 25px;
+    border:  1px solid var(--lightPurple);
+    outline: none;
+}
+
+
+select {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid var(--lightPurple);
+    outline: none;
+    margin-bottom: 25px;
+}
+
+
+textarea {
+    border: 1px solid var(--lightPurple);
+    width: 300px;
+    height: 130px;
+    padding: 10px;
+    outline: none;
+    line-height: 1.4;
+}
+
+button {
+    display: block;
+    width: 160px;
+    height: 30px;
+    border: none;
+    color: #fff;
+    background-color: var(--lightPurple);
+    border-radius: 30px;
+    outline: none;
+    margin: 20px 0;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+::placeholder {
+    color: #C0C0C0;
+    opacity: 0.4;
+}
+
+@media only screen and (max-width: 855px) {
+    .form-section {
+        grid-template-columns: 1fr;
+    }
+}

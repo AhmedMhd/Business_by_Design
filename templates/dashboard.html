@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta Tag -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Dashboard Style -->
+    <link rel="stylesheet" href="../static/css/dashboard.css"> 
+    <!-- shared-ui -->
+    <link rel="stylesheet" href="../static/css/shared-ui.css">
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="../static/css/all.min.css"> 
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <!-- Favicon  -->
+    <!-- <link rel="icon" href="../assets/images/favicon-16x16.png" sizes="16x16"> -->
+    <!-- Title -->
+    <title>Dashboard</title>
+</head>
+<body>
+
+  
+    <div class="container">
+        <!-- Start NavBar -->
+        <nav class="navbar">
+            <div class="nav-icon" onclick="toggleSidebar()">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="navbar-right">
+                <a href="#">
+                    <img src="../static/images/manager.png" alt="img" width="30" >
+                    <div class="account">
+                        <span>Ahmed Mhd</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </a>
+            </div>
+        </nav>
+        <!-- End NavBar -->
+
+        <!-- Start Main -->
+        <main>
+            <div class="main-container">
+                <!-- Start Title -->
+                <div class="title">
+                    <h1>Dashboard</h1>
+                </div>
+                <!-- End Title -->
+
+                <!-- Start Main Cards -->
+                <div class="main-cards">
+                    <div class="card">
+                        <div class="left">
+                            <h2>34</h2>
+                            <span>Company</span>
+                        </div>
+                        <div class="right">
+                            <i class="icon far fa-building"></i>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="left">
+                            <h2>45</h2>
+                            <span>Freelancers</span>
+                        </div>
+                        <div class="right">
+                            <i class="fas fa-igloo"></i>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="left">
+                            <h2>20</h2>
+                            <span>Cases</span>
+                        </div>
+                        <div class="right">
+                            <i class="fas fa-suitcase"></i>
+                        </div>
+                    </div>
+                    <a class="card add-case" href="#">
+                        <div class="add-icon">
+                            <i class="fas fa-plus"></i>
+                       </div>
+                       <p>Add New Case</p>
+                    </a>
+                </div>
+                <!-- End Main Cards -->
+
+
+                <!-- Start Charts -->
+                <div class="charts">
+                    <div class="chart-card">
+                        <div class="chart-title">
+                          <div>
+                            <!-- <h1>Lorem, ipsum dolor.</h1>
+                            <p>Lorem ipsum dolor sit amet consectetur.</p> -->
+                          </div>
+                        </div>
+                        <div id="chart1"></div>
+                    </div>
+                    <div class="chart-card">
+                        <div class="chart-title">
+                          <div>
+                            <!-- <h1>Lorem, ipsum dolor.</h1>
+                            <p>Lorem ipsum dolor sit amet consectetur.</p> -->
+                          </div>
+                          <i class="fa fa-usd" aria-hidden="true"></i>
+                        </div>
+                        <div id="test"></div>
+                    </div>
+                    <div class="chart-card">
+                        <div class="chart-title">
+                          <div>
+                            <!-- <h1>Lorem, ipsum dolor.</h1>
+                            <p>Lorem ipsum dolor sit amet consectetur.</p> -->
+                          </div>
+                          <i class="fa fa-usd" aria-hidden="true"></i>
+                        </div>
+                        <div id="ch"></div>
+                    </div>
+                    <div class="chart-card">
+                        <div class="chart-title">
+                          <div>
+                            <!-- <h1>Lorem, ipsum dolor.</h1>
+                            <p>Lorem ipsum dolor sit amet consectetur.</p> -->
+                          </div>
+                          <i class="fa fa-usd" aria-hidden="true"></i>
+                        </div>
+                        <div id="c"></div>
+                    </div>
+                </div>
+                <!-- End Charts -->
+            </div>
+        </main>
+        <!-- End Main -->
+
+        <!-- Start Sidebar -->
+        <div id="sidebar">
+            <div class="sidebar-title">
+                <h2>Business by design</h2>
+                <i
+                  onclick="closeSidebar()"
+                  class="fa fa-times"
+                  id="sidebarIcon"
+                  aria-hidden="true"
+                ></i>
+            </div>
+
+            <section class="sidebar-menu">
+                <div class="sidebar-link active-menu-link">
+                    <i class="fa fa-home"></i>
+                    <a href="/">Dashboard</a>
+                </div>
+                <div class="sidebar-link">
+                    <i class="far fa-building"></i>
+                    <a href="/company">Company</a>
+                </div>
+                <div class="sidebar-link">
+                    <i class="fas fa-igloo"></i>
+                    <a href="/freelancers">Freelancers</a>
+                </div>
+                <div class="sidebar-link">
+                    <i class="fas fa-users"></i>
+                    <a href="#">Employees</a>
+                </div>
+                <div class="sidebar-link">
+                    <i class="fas fa-calendar-alt"></i>
+                    <a href="#">Calender</a>
+                </div>
+                <div class="sidebar-link">
+                    <i class="fas fa-user-plus"></i>
+                    <a href="/register">Register</a>
+                </div>
+                <div class="sidebar-link">
+                    <i class="fas fa-cog"></i>
+                    <a href="#">Settings</a>
+                </div>
+            </section>
+        </div>
+        <!-- End Sidebar -->
+
+
+    </div>
+
+
+    <!-- apexcharts -->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="../static/js/main.js"></script>
+    <script src="../static/js/js2.js"></script>
+    
+
+    <!-- Script -->
+    
+</body>
+</html>

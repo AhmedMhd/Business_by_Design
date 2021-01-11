@@ -1,0 +1,89 @@
+:root {
+    --Purple:  #5E50B6;
+    --lightRed:  #FF6464;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style: 0;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.register {
+    width: 80%;
+    background-color: #FFF;
+    width: 400px;
+    height: 510px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 5px 15px #ddd;
+}
+
+.register-box {
+    padding: 30px 45px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.register-box h1 {
+    color: var(--lightRed);
+    font-size: 33Px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.register-box span {
+    display: inline-block;
+    font-size: 15px;
+    margin-bottom: 30px;
+    color: var(--Purple);
+}
+
+.register-box a {
+    text-decoration: underline;
+    font-weight: normal;
+    color: var(--Purple);
+    margin-left: 10px;
+    font-size: 15px;
+}
+
+form label{
+    display: block;
+    margin-bottom: 10px;
+    font-weight: normal;
+    color: var(--Purple);
+}
+
+form input {
+    width: 300px;
+    margin-bottom: 25px;
+    padding: 10px;
+    border: 1px solid var(--Purple);
+    outline: 0;
+}
+
+
+form button {
+    width: 300px;
+    padding: 10px;
+    border: 0;
+    color: #FFF;
+    background-color: var(--Purple);
+    outline: 0;
+    font-size: 20px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+::placeholder {
+    color: var(--Purple);
+    opacity: 0.2;
+}
