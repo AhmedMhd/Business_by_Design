@@ -44,42 +44,26 @@
             <div class="main-container">
                 <!-- Start Title -->
                 <div class="title">
-                    <h1>Add Company</h1>
+                    <h1>Add Case</h1>
                 </div>
                 <!-- End Title -->
 
                 <!-- Start Form -->
                 <form class="form-section">
                     <div class="input-left">
-                        <label for="email">Company Name</label>
-                        <input type="text" id="text" placeholder="Company X" required>
-                        <label for="">Category</label>
-                        <select id="category" class="category">
-                            <option value="company">Marketing</option>
-                            <option value="freelancers">Front End</option>
-                            <option value="company">UI & UX</option>
-                            <option value="freelancers">Back End</option>
+                        <label for="workName">Work Name</label>
+                        <input type="text" id="workName" placeholder="Lorem Ipsum is simply" required>
+                        <label for="clientName">Client name</label>
+                        <input type="text" id="clientName" placeholder="Company X" required>
+                        <label for="serviceProvider">Category</label>
+                        <select id="serviceProvider" class="category">
+                            <option value="company">Company</option>
+                            <option value="freelancer">Freelancer</option>
                         </select>
-                        <label for="location">Location</label>
-                        <input type="text" id="location" placeholder="Iraq, Baghdad" required>
-
-                        <label for="real-file">Upload image</label>
-                        <input type="file" id="real-file" hidden="hidden">
-                        <button type="button" id="custom-button">
-                            Browse File
-                            <!-- <i class="fas fa-upload"></i> -->
-                            <img src="../assets/images/upload.svg" alt="" >
-                        </button>
-                        <span id="custom-text"></span>
-                    </div>
-                    <div class="input-right">
-                        <label for="phone_number">Phone number</label>
-                        <input type="text" id="phone_number" placeholder="07713522385" required>
-                        <label for="email">Email</label>
-                        <input type="email" id="email" placeholder="ahmed1@gmail.com" required>
-                        <label for="description">Description</label>
-                        <textarea name="description" id="description" cols="40" rows="10" placeholder="Lorem Ipsum is simply dummy text of the printin and typesetting industry."></textarea>
-                    </div>
+                        <label for="">Provider name</label>
+                        <input type="text" id="" placeholder="Company X" required>
+                        <label for="">Date</label>
+                        <input type="date" id="date" name="date">
 
                     <button type="submit">Add</button>
                 </form>

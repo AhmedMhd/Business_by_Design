@@ -20,7 +20,7 @@
 </head>
 <body>
 
-  
+
     <div class="container">
         <!-- Start NavBar -->
         <nav class="navbar">
@@ -62,8 +62,15 @@
                         </select>
                         <label for="location">Location</label>
                         <input type="text" id="location" placeholder="Iraq, Baghdad" required>
-                        <label for="">Upload image</label>
-                        <input type="text" id="text" placeholder="Upload image">
+
+                        <label for="real-file">Upload image</label>
+                        <input type="file" id="real-file" hidden="hidden">
+                        <button type="button" id="custom-button">
+                            Browse File
+                            <!-- <i class="fas fa-upload"></i> -->
+                            <img src="../assets/images/upload.svg" alt="" >
+                        </button>
+                        <span id="custom-text"></span>
                     </div>
                     <div class="input-right">
                         <label for="phone_number">Phone number</label>
@@ -96,19 +103,15 @@
             <section class="sidebar-menu">
                 <div class="sidebar-link active-menu-link">
                     <i class="fa fa-home"></i>
-                    <a href="/">Dashboard</a>
+                    <a href="dashboard.html">Dashboard</a>
                 </div>
                 <div class="sidebar-link">
                     <i class="far fa-building"></i>
-                    <a href="/company">Company</a>
+                    <a href="company.html">Company</a>
                 </div>
                 <div class="sidebar-link">
                     <i class="fas fa-igloo"></i>
-                    <a href="/freelancers">Freelancers</a>
-                </div>
-                <div class="sidebar-link">
-                    <i class="fas fa-users"></i>
-                    <a href="#">Employees</a>
+                    <a href="#">Freelancers</a>
                 </div>
                 <div class="sidebar-link">
                     <i class="fas fa-calendar-alt"></i>
@@ -116,7 +119,7 @@
                 </div>
                 <div class="sidebar-link">
                     <i class="fas fa-user-plus"></i>
-                    <a href="/register">Register</a>
+                    <a href="register.html">Register</a>
                 </div>
                 <div class="sidebar-link">
                     <i class="fas fa-cog"></i>
@@ -129,9 +132,9 @@
 
     </div>
 
-    
+
     <!-- Script -->
-    <script src="../static/js/js2.js"></script>
-    
+    <script src="../static/../static/js/js2.js"></script>
+
 </body>
 </html>

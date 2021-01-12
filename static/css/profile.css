@@ -5,6 +5,8 @@
     --lightRed:  #FF3366;
     --barsColor: #97A3B9;
     --yellow: #FBBC06;
+    --green: #0ACF97;
+    --lightGray: #DEE1E7;
 }
 
 .profile-info {
@@ -14,8 +16,9 @@
     padding: 30px;
     text-align: center;
     margin-top: 30px;
+    box-shadow: 0 5px 10px #f1f6fd;
 }
- 
+
 .profile-info .user-img img{
     width: 120px;
     height: 120px;
@@ -140,7 +143,7 @@
     line-height: 1.5;
     margin: auto 0;
     padding: 0 100px;
-    
+
 }
 
 /* Contact */
@@ -248,7 +251,7 @@
     justify-content: center;
     align-items: center;
     margin: 80px auto 0 auto;
-    
+
 }
 
 .rating-number p {
@@ -330,6 +333,170 @@
 }
 
 /* END RATING */
+
+
+/* Start Under Work */
+.table {
+    width: 70%;
+    border-collapse: collapse;
+    margin: 50px auto 0;
+    box-shadow: 0 5px 10px #f1f6fd;
+}
+
+.table thead {
+    background-color: #E8EAFE;
+    color: var(--darkBlue);
+}
+
+.table th {
+    padding: 10px;
+    border-bottom: 1px solid #EAF0F7;
+    text-align: left;
+    font-size: 14px;
+}
+
+td {
+    padding: 20px 10px;
+    border-bottom: 1px solid #EAF0F7;
+    text-align: left;
+    font-size: 13px;
+}
+
+.progress {
+    margin: 0 auto;
+    text-align: center;
+    border-bottom: 1px solid #EAF0F7;
+}
+
+.progress h3 {
+    margin-bottom: 17px;
+    color: var(--darkBlue);
+}
+
+.checkbox {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 30px;
+}
+
+.checkbox  input {
+    margin-left: 50px;
+}
+
+input[type=checkbox] {
+    transform: scale(1.8);
+    border: none;
+    background-color: darkgray;
+}
+
+input:checked {
+    background-color: var(--green);
+    color: var(--green);
+}
+
+.checkbox label {
+    display: inline-block;
+    margin-left: 15px;
+}
+
+
+/* Progress Checkbox*/
+.progress_bar {
+    width: 70%;
+    padding: 3px;
+	text-align: center;
+    background-color: var(--lightPurple);
+    margin: 10px auto;
+    border-radius: 30px;
+}
+
+.progress_inner {
+    content: "";
+    transition: background-color .6s linear;
+    /* background-color:#E8EAFE;    */
+    color: #FFF;
+}
+
+
+
+
+/* Rating & Review */
+
+.rating-review-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rating-review h3{
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+
+.star-widget input{
+    display: none;
+}
+
+.star-widget label {
+    margin-top: 25px;
+    margin-right: 8px;
+    font-size: 27px;
+    color: #E8EAFE;
+    transition: all 0.2s ease;
+}
+
+input:not(:checked) ~ label:hover,
+input:not(:checked) ~ label:hover ~ label{
+    color: var(--lightPurple);
+}
+
+input:checked ~ label{
+    color: var(--lightPurple);
+}
+
+input#rate-5:checked ~ label{
+    color: var(--lightPurple);
+    text-shadow: 0 0 20px rgb(214, 207, 207);
+}
+
+
+.rating-review-form {
+    text-align: center;
+}
+
+
+form textarea {
+    border: 1px solid var(--lightGray);
+    outline: none;
+    background-color: transparent;
+    /* background-color: wheat; */
+    padding: 20px 150px 20px;
+    margin-top: 25px;
+    resize: none;
+    display: block;
+}
+
+::placeholder {
+    text-align: center;
+    font-size: 14px;
+}
+
+.rating-review-form .btn {
+    margin-top: 20px;
+    border: none;
+    outline: none;
+    padding: 8px 30px;
+    background-color: var(--barsColor);
+    color: #FFF;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+/* End Under Work */
 
 
 
