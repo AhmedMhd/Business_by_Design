@@ -1,55 +1,43 @@
 :root {
-    --Purple:  #5E50B6;
-    --lightRed:  #FF6464;
+    --darkBlue: #0C1427;
+    --mainContent: #F8F9FB;
+    --lightPurple:  #727CF5;
+    --lightRed:  #FF3366;
+    --barsColor: #97A3B9;
+    --yellow: #FBBC06;
+    --green: #0ACF97;
+    --lightGray: #DEE1E7;
 }
 
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    list-style: 0;
-    text-decoration: none;
-    font-family: 'Montserrat', sans-serif;
-}
+
 
 .register {
-    width: 80%;
-    background-color: #FFF;
+    width: 100%;
     width: 400px;
     height: 510px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    box-shadow: 0 5px 15px #ddd;
-}
-
-.register-box {
-    padding: 30px 45px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
+    margin: 300px auto;
     transform: translate(-50%, -50%);
 }
 
-.register-box h1 {
+
+.register h1 {
     color: var(--lightRed);
     font-size: 33Px;
     font-weight: bold;
     margin-bottom: 30px;
 }
 
-.register-box span {
+.register span {
     display: inline-block;
     font-size: 15px;
     margin-bottom: 30px;
-    color: var(--Purple);
+    color: var(--lightPurple);
 }
 
-.register-box a {
+.register a {
     text-decoration: underline;
     font-weight: normal;
-    color: var(--Purple);
+    color: var(--lightPurple);
     margin-left: 10px;
     font-size: 15px;
 }
@@ -58,15 +46,16 @@ form label{
     display: block;
     margin-bottom: 10px;
     font-weight: normal;
-    color: var(--Purple);
+    color: var(--lightPurple);
 }
 
 form input {
     width: 300px;
     margin-bottom: 25px;
     padding: 10px;
-    border: 1px solid var(--Purple);
+    border: 1px solid var(--lightPurple);
     outline: 0;
+    background-color: transparent;
 }
 
 
@@ -75,7 +64,7 @@ form button {
     padding: 10px;
     border: 0;
     color: #FFF;
-    background-color: var(--Purple);
+    background-color: var(--lightPurple);
     outline: 0;
     font-size: 20px;
     margin-bottom: 20px;
@@ -84,6 +73,6 @@ form button {
 }
 
 ::placeholder {
-    color: var(--Purple);
+    color: var(--barsColor);
     opacity: 0.2;
 }
