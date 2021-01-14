@@ -81,7 +81,7 @@ form input {
 }
 
 ::placeholder {
-    color: var(--Purple);
+    color: var(--barsColor);
     opacity: 0.2;
 }
 

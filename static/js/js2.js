@@ -39,3 +39,51 @@ function openTap(event, tabName) {
 // pagination
 
 
+// Upload Image
+const realFileBtn = document.getElementById("real-file");
+const customBtn = document.getElementById("custom-button");
+const customTxt = document.getElementById("custom-text");
+
+customBtn.addEventListener("click", function() {
+  realFileBtn.click();
+});
+
+realFileBtn.addEventListener("change", function() {
+  if (realFileBtn.value) {
+    customTxt.innerHTML = realFileBtn.value.match(
+      /[\/\\]([\w\d\s\.\-\(\)]+)$/
+    )[1];
+  } else {
+    customTxt.innerHTML = "No file chosen, yet.";
+  }
+});
+
+
+
+
+// Progress
+$(document).ready(function() {
+  
+  var count = 0;
+  var checked = 0;
+  function countBoxes() { 
+    count = $("input[type='checkbox']").length;
+    console.log(count);
+  }
+  
+  countBoxes();
+  $(":checkbox").click(countBoxes);
+  
+  function countChecked() {
+    checked = $("input:checked").length;
+    
+    var percentage = parseInt(((checked / count) * 100),10);
+    $(".progressbar-bar").progressbar({
+            value: percentage
+        });
+    $(".progress_inner").text(percentage + "%");
+  }
+  
+  countChecked();
+  $(":checkbox").click(countChecked);
+});
