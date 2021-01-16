@@ -69,7 +69,7 @@
                         <option value="3">2 Rating</option>
                         <option value="1">1 Rating</option>
                     </select>
-                    <a href="/company/addcompany" class="add box">
+                    <a href="/companies/addcompany" class="add box">
                         Add Company
                         <i class="fas fa-plus"></i>
                     </a>
@@ -89,15 +89,16 @@
                         <th>Action</th>
                     </thead>
                     <tbody>
+                        {% for company in companyDetails %}
                         <tr>
-                            <td data-label="#">1</td>
+                            <td data-label="#">{{company[0]}}</td>
                             <td data-label="##" class="img-circle">
                                 <img src="../static/images/account-img.jpg" alt="image">
                             </td>
-                            <td data-label="Name">Comapny X</td>
-                            <td data-label="Category">Front End</td>
-                            <td data-label="Location">Iraq, Baghdad</td>
-                            <td data-label="Rating">5</td>
+                            <td data-label="Name">{{company[1]}}</td>
+                            <td data-label="Category">{{company[2]}}</td>
+                            <td data-label="Location">{{company[5]}}</td>
+                            <td data-label="Rating">{{company[3]}}</td>
                             <td data-label="Profile" class="profile">
                                 <a href="#">
                                     <i class="far fa-id-badge"></i>
@@ -112,99 +113,7 @@
                                 </a>
                             </td>
                         </tr>
-                        <tr>
-                            <td data-label="#">2</td>
-                            <td data-label="##" class="img-circle">
-                                <img src="../static/images/account-img.jpg" alt="image">
-                            </td>
-                            <td data-label="Name">Comapny X</td>
-                            <td data-label="Category">Front End</td>
-                            <td data-label="Location">Iraq, Baghdad</td>
-                            <td data-label="Rating">5</td>
-                            <td data-label="Profile" class="profile">
-                                <a href="#">
-                                    <i class="far fa-id-badge"></i>
-                                </a>
-                            </td>
-                            <td data-label="Action" class="action">
-                                <a href="#">
-                                    <i class="fas fa-pencil-alt"></i>
-                                </a>
-                                <a href="#">
-                                    <i class="far fa-trash-alt"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td data-label="#">3</td>
-                            <td data-label="##" class="img-circle">
-                                <img src="../static/images/account-img.jpg" alt="image">
-                            </td>
-                            <td data-label="Name">Comapny X</td>
-                            <td data-label="Category">Front End</td>
-                            <td data-label="Location">Iraq, Baghdad</td>
-                            <td data-label="Rating">5</td>
-                            <td data-label="Profile" class="profile">
-                                <a href="#">
-                                    <i class="far fa-id-badge"></i>
-                                </a>
-                            </td>
-                            <td data-label="Action" class="action">
-                                <a href="#">
-                                    <i class="fas fa-pencil-alt"></i>
-                                </a>
-                                <a href="#">
-                                    <i class="far fa-trash-alt"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td data-label="#">4</td>
-                            <td data-label="##" class="img-circle">
-                                <img src="../static/images/account-img.jpg" alt="image">
-                            </td>
-                            <td data-label="Name">Comapny X</td>
-                            <td data-label="Category">Front End</td>
-                            <td data-label="Location">Iraq, Baghdad</td>
-                            <td data-label="Rating">5</td>
-                            <td data-label="Profile" class="profile">
-                                <a href="#">
-                                    <i class="far fa-id-badge"></i>
-                                </a>
-                            </td>
-                            <td data-label="Action" class="action">
-                                <a href="#">
-                                    <i class="fas fa-pencil-alt"></i>
-                                </a>
-                                <a href="#">
-                                    <i class="far fa-trash-alt"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td data-label="#">5</td>
-                            <td data-label="##" class="img-circle">
-                                <img src="../static/images/account-img.jpg" alt="image">
-                            </td>
-                            <td data-label="Name">Comapny X</td>
-                            <td data-label="Category">Front End</td>
-                            <td data-label="Location">Iraq, Baghdad</td>
-                            <td data-label="Rating">5</td>
-                            <td data-label="Profile" class="profile">
-                                <a href="#">
-                                    <i class="far fa-id-badge"></i>
-                                </a>
-                            </td>
-                            <td data-label="Action" class="action">
-                                <a href="#">
-                                    <i class="fas fa-pencil-alt"></i>
-                                </a>
-                                <a href="#">
-                                    <i class="far fa-trash-alt"></i>
-                                </a>
-                            </td>
-                        </tr>
-
+                        {% endfor %}
                     </tbody>
                 </table>
                 <!-- End Table -->
@@ -232,7 +141,7 @@
                 </div>
                 <div class="sidebar-link">
                     <i class="far fa-building"></i>
-                    <a href="/company">Company</a>
+                    <a href="/companies">Company</a>
                 </div>
                 <div class="sidebar-link">
                     <i class="fas fa-igloo"></i>

@@ -49,19 +49,21 @@
                 <!-- End Title -->
 
                 <!-- Start Form -->
-                <form class="form-section">
+                <form action=" " method="POST">
                     <div class="input-left">
-                        <label for="company">Company Name</label>
-                        <input type="text" id="company" placeholder="Company X" required>
-                        <label for="">Category</label>
-                        <select id="category" class="category">
-                            <option value="company">Marketing</option>
-                            <option value="freelancers">Front End</option>
-                            <option value="company">UI & UX</option>
-                            <option value="freelancers">Back End</option>
+                      <label for="company">Company Name</label>
+                      <input name="name" type="text" id="company" />
+                  
+                      <label for="">Category</label>
+                        <select name="category" id="category" class="category">
+                            <option value="Marketing">Marketing</option>
+                            <option value="Front End">Front End</option>
+                            <option value="UI & UX">UI & UX</option>
+                            <option value="Back End">Back End</option>
                         </select>
+                  
                         <label for="location">Location</label>
-                        <input type="text" id="location" placeholder="Iraq, Baghdad" required>
+                        <input name = "location" type="text" id="location" placeholder="Iraq, Baghdad" >
 
                         <label for="real-file">Upload image</label>
                         <input type="file" id="real-file" hidden="hidden">
@@ -74,15 +76,17 @@
                     </div>
                     <div class="input-right">
                         <label for="phone_number">Phone number</label>
-                        <input type="text" id="phone_number" placeholder="07713522385" required>
+                        <input name="phone_number" type="text" id="phone_number" placeholder="07713522385" >
+                      
                         <label for="email">Email</label>
-                        <input type="email" id="email" placeholder="ahmed1@gmail.com" required>
+                        <input name="email" type="email" id="email" placeholder="ahmed1@gmail.com" >
+                      
                         <label for="description">Description</label>
                         <textarea name="description" id="description" cols="40" rows="10" placeholder="Lorem Ipsum is simply dummy text of the printin and typesetting industry."></textarea>
-                    </div>
-
-                    <button type="submit">Add</button>
-                </form>
+                      </div>
+                      <button type="submit">Add</button>
+                    </form>
+                      
                 <!-- End Form -->
             </div>
         </main>
@@ -103,15 +107,19 @@
             <section class="sidebar-menu">
                 <div class="sidebar-link active-menu-link">
                     <i class="fa fa-home"></i>
-                    <a href="dashboard.html">Dashboard</a>
+                    <a href="/">Dashboard</a>
                 </div>
                 <div class="sidebar-link">
                     <i class="far fa-building"></i>
-                    <a href="company.html">Company</a>
+                    <a href="/companies">Company</a>
                 </div>
                 <div class="sidebar-link">
                     <i class="fas fa-igloo"></i>
-                    <a href="#">Freelancers</a>
+                    <a href="/freelancers">Freelancers</a>
+                </div>
+                <div class="sidebar-link">
+                    <i class="fas fa-users"></i>
+                    <a href="#">Employees</a>
                 </div>
                 <div class="sidebar-link">
                     <i class="fas fa-calendar-alt"></i>
@@ -119,7 +127,7 @@
                 </div>
                 <div class="sidebar-link">
                     <i class="fas fa-user-plus"></i>
-                    <a href="register.html">Register</a>
+                    <a href="/register">Register</a>
                 </div>
                 <div class="sidebar-link">
                     <i class="fas fa-cog"></i>

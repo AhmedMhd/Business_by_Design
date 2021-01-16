@@ -1,20 +1,15 @@
-from flask import Flask, render_template, request, redirect, url_for, session 
-from flask_mysqldb import MySQL 
-import MySQLdb.cursors 
+from flask import Flask, render_template, request, redirect
+from flask_mysqldb import MySQL
+import yaml
 
+app = Flask(__name__)
 
-
-app = Flask(__name__) 
-
-
-app.secret_key = 'your secret key'
-
-
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'C2@2020#88&ZOZO'
-app.config['MYSQL_DB'] = 'team1db'
-
+# Configure db
+db = yaml.load(open('db.yaml'))
+app.config['MYSQL_HOST'] = db['mysql_host']
+app.config['MYSQL_USER'] = db['mysql_user']
+app.config['MYSQL_PASSWORD'] = db['mysql_password']
+app.config['MYSQL_DB'] = db['mysql_db']
 
 mysql = MySQL(app)
 
@@ -22,12 +17,30 @@ mysql = MySQL(app)
 def index():
     return render_template('dashboard.html')
 
-@app.route('/company')
+@app.route('/companies', methods=['GET', 'POST'])
 def company():
-    return render_template('company.html')
+    cur = mysql.connection.cursor()
+    resultValue = cur.execute("SELECT * FROM companies")
+    if resultValue > 0:
+        companyDetails = cur.fetchall()
+        return render_template('company.html',companyDetails=companyDetails)
 
-@app.route('/company/addcompany')
+@app.route('/companies/addcompany', methods=['GET', 'POST'])
 def addcompany():
+    if request.method == 'POST':
+        # Fetch form data
+        companyDetails = request.form
+        name = companyDetails['name']
+        category = companyDetails['category']
+        location = companyDetails['location']
+        phone_number = companyDetails['phone_number']
+        email = companyDetails['email']
+        description = companyDetails['description']
+        cur = mysql.connection.cursor()
+        cur.execute("INSERT INTO companies(name, category, location, phone_number, email, description) VALUES(%s, %s, %s, %s, %s, %s)",(name, category, location, phone_number, email, description))
+        mysql.connection.commit()
+        cur.close()
+        return redirect('/companies')
     return render_template('addcompany.html')
 
 @app.route('/freelancers')
