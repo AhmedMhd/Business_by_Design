@@ -113,21 +113,21 @@ input::placeholder {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 21px;
-    height: 21px;
+    width: 19px;
+    height: 19px;
     color: var(--lightPurple);
     font-size: 20px;
-    border: 2px solid var(--lightPurple);
+    border: 1px solid var(--lightPurple);
     border-radius: 50%;
 }
 
 .pagination a i {
-    font-size: 13px;
+    font-size: 10px;
 }
 
 .page-number {
-    margin: 4px 10px 0;
-    font-size: 15px;
+    margin: 1.5px 10px 0;
+    font-size: 13px;
     color: var(--lightPurple);
 }
 /* End pagination */
