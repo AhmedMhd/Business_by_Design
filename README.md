@@ -24,7 +24,18 @@ Technologies
 -	HTML 
 -	CSS
 -	JavaScript 
--	MySQL
+-	SQLite3
+-	SQLAlchemy
 -	Python
 -	Flask
 -	Jinja.
+
+<br>
+
+# How to run the program
+in terminal
+-	python
+-	from app import db
+-	db.create_all()
+-	python app.py
+

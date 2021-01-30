@@ -1,0 +1,287 @@
+{% extends "layout.html" %}
+    {% block head %}
+    <!-- Profile Style -->
+    <link rel="stylesheet" href="../static/css/profile.css">
+    <!-- Title -->
+    <title>Profile</title>
+    {% endblock %}
+
+
+    {% block content %}
+        <!-- Start Main -->
+        <main>
+            <div class="main-container">
+                <!-- Start Profile Info -->
+                <div class="profile-info">
+                    <div class="user-img">
+                        <img src="../static/images/account-img.jpg" alt="account-img">
+                    </div>
+                    <h2>"{{freelancersDetails.name}}"</h2>
+                    <p>"{{freelancersDetails.category}}"</p>
+                    <a href="/user/{{freelancersDetails.id}}" class="edit-profile-btn">Edit Profile</a>
+                </div>
+                <!-- End Profile Info -->
+
+                <!-- Start Tabs -->
+                <div class="tabs-container">
+                    <div class="tabs">
+                        <a
+                         role="button"
+                         tabindex="0"
+                         class="active"
+                         onclick="openTap(event, 'tab1')"
+                        >Under Work</a>
+                        <a role="button" tabindex="0" onclick="openTap(event, 'tab2')">Previous works</a>
+                        <a role="button" tabindex="0" onclick="openTap(event, 'tab3')">Rating</a>
+                        <a role="button" tabindex="0" onclick="openTap(event, 'tab4')">About</a>
+                    </div>
+                </div>
+
+                <!-- Start Tab Content -->
+
+                <!-- START UNDER WORK -->
+                <div class="tabContent underWork-container" id="tab1">
+                   <table class="table">
+                        <thead>
+                            <th>Work Name</th>
+                            <th>Client name</th>
+                            <th>Service provider</th>
+                            <th>Date</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Lorem Ipsum is simply dummy text </td>
+                                <td>Ahmed Mohammed</td>
+                                <td>Company X</td>
+                                <td>11/01/2021</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" class="progress">
+                                    <h3>Progress</h3>
+                                    <form class="checkbox">
+                                        <input type="checkbox" id="check_box_01" name="check_box_01" value="1">
+                                        <label for="check_box_01">25%</label><br>
+
+                                        <input type="checkbox" id="check_box_02" name="check_box_02" value="2">
+                                        <label for="check_box_02">50%</label><br>
+
+                                        <input type="checkbox" id="check_box_03" name="check_box_03" value="3">
+                                        <label for="check_box_03">75%</label><br>
+
+                                        <input type="checkbox" id="check_box_04" name="check_box_04" value="4">
+                                        <label for="check_box_04">100%</label><br>
+                                    </form>
+                                    <div class="progress_bar">
+                                        <div class="progress_inner">100%</div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" class="rating-review">
+                                    <h3>Rating & Review</h3>
+                                    <div class="rating-review-content">
+                                        <form class="rating-review-form">
+                                            <div class="star-widget">
+                                                <input type="radio" name="rate" id="rate-5">
+                                                <label for="rate-5" class="fas fa-star"></label>
+
+                                                <input type="radio" name="rate" id="rate-4">
+                                                <label for="rate-4" class="fas fa-star"></label>
+
+                                                <input type="radio" name="rate" id="rate-3">
+                                                <label for="rate-3" class="fas fa-star"></label>
+
+                                                <input type="radio" name="rate" id="rate-2">
+                                                <label for="rate-2" class="fas fa-star"></label>
+
+                                                <input type="radio" name="rate" id="rate-1">
+                                                <label for="rate-1" class="fas fa-star"></label>
+                                            </div>
+
+                                            <textarea name="" id="" rows="5" cols="35" placeholder="Write your review here"></textarea>
+
+                                            <button type="submit" class="btn">Done</button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                   </table>
+                </div>
+                <!-- END UNDER WORK -->
+
+                <div class="tabContent" id="tab2">
+                    <h3>Previous works</h3>
+                </div>
+
+                <!-- START RATING -->
+                <div class="tabContent rating-container" id="tab3">
+                    <div class="rating-number">
+                        <p>4.5</p>
+                    </div>
+                    <div class="rating-card">
+                        <div class="rating-stars">
+                            <h4>Rating</h4>
+                            <ul class="stars">
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="review-content">
+                        <h4>Review</h4>
+                        <div class="review-card">
+                            <div class="review-title">
+                                <h5>Case Name</h5>
+                                <div class="case-date">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <p>10/1/2021</p>
+                                </div>
+                            </div>
+                            <p class="p-review">
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+                            </p>
+                            <ul class="stars">
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                            </ul>
+                        </div>
+                        <div class="review-card">
+                            <div class="review-title">
+                                <h5>Case Name</h5>
+                                <div class="case-date">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <p>10/1/2021</p>
+                                </div>
+                            </div>
+                            <p class="p-review">
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+                            </p>
+                            <ul class="stars">
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                            </ul>
+                        </div>
+                        <div class="review-card">
+                            <div class="review-title">
+                                <h5>Case Name</h5>
+                                <div class="case-date">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <p>10/1/2021</p>
+                                </div>
+                            </div>
+                            <p class="p-review">
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+                            </p>
+                            <ul class="stars">
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                            </ul>
+                        </div>
+                        <div class="review-card">
+                            <div class="review-title">
+                                <h5>Case Name</h5>
+                                <div class="case-date">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <p>10/1/2021</p>
+                                </div>
+                            </div>
+                            <p class="p-review">
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+                            </p>
+                            <ul class="stars">
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- END RATING -->
+
+                <!-- START ABOUT -->
+                <div class="tabContent about-container" id="tab4">
+                    <div class="description">
+                        <h4>Description</h4>
+                        <div class="description-box">
+                            <p>
+                                {{freelancersDetails.description}}
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="contact">
+                        <h4>Contact</h4>
+                        <div class="contact-card">
+                            <div class="location card">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <p>{{freelancersDetails.location}}</p>
+                            </div>
+                            <div class="email card">
+                                <i class="fas fa-envelope"></i>
+                                <p>{{freelancersDetails.email}}</p>
+                            </div>
+                            <div class="phone card">
+                                <i class="fas fa-phone"></i>
+                                <p>{{freelancersDetails.phone}}</p>
+                            </div>
+                            <div class="social card">
+                                <a href="#"><i class="fab fa-facebook-square"></i></a>
+                                <a href="#"><i class="fab fa-twitter-square"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="services">
+                        <h4>Services</h4>
+                        <div class="services-card">
+                            <div class="card">
+                                <p>Front End</p>
+                            </div>
+                            <div class="card">
+                                <p>Back End</p>
+                            </div>
+                            <div class="card">
+                                <p>UI & UX</p>
+                            </div>
+                            <div class="card">
+                                <p>Database</p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+                <!-- END ABOUT -->
+
+                <!-- End Tab Content -->
+
+
+                <!-- End Tabs -->
+            </div>
+        </main>
+        <!-- End Main -->
+
+
+
+
+    </div>
+
+    <script src="../static/js/js2.js"></script>
+{% endblock %}

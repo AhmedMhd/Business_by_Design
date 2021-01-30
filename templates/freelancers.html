@@ -1,44 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <!-- Meta Tag -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends "layout.html" %}
+    {% block head %}
     <!-- Freelancers Style -->
     <link rel="stylesheet" href="../static/css/freelancers.css"> 
-    <!-- shared-ui -->
-    <link rel="stylesheet" href="../static/css/shared-ui.css"> 
-    <!-- Fontawesome -->
-    <link rel="stylesheet" href="../static/css/all.min.css"> 
-    <!-- Font -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-    <!-- Favicon  -->
-    <!-- <link rel="icon" href="../assets/images/favicon-16x16.png" sizes="16x16"> -->
     <!-- Title -->
     <title>Freelancers</title>
-</head>
-<body>
+    {% endblock %}
 
-   
-    <div class="container">
-        <!-- Start NavBar -->
-        <nav class="navbar">
-            <div class="nav-icon" onclick="toggleSidebar()">
-                <i class="fas fa-bars"></i>
-            </div>
-            <div class="navbar-right">
-                <a href="#"> 
-                    <img src="../static/images/manager.png" alt="img" width="30" >
-                    <div class="account">
-                        <span>Ahmed Mhd</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                </a>
-            </div>
-        </nav>
-        <!-- End NavBar -->
 
+    {% block content %}
         <!-- Start Main -->
         <main>
             <div class="main-container">
@@ -69,7 +38,7 @@
                         <option value="3">3 Rating</option>
                         <option value="1">1 Rating</option>
                     </select>
-                    <a href="/freelancers/addfreelancers" class="add box">
+                    <a href="/addFreelancers" class="add box">
                         Add Freelancer
                         <i class="fas fa-plus"></i>
                     </a>
@@ -89,125 +58,41 @@
                             <th>Action</th>
                         </thead>
                         <tbody>
+                            {% for freelancer in freelancersDetails %}
                             <tr>
-                                <td data-label="#">1</td>
+                                <td data-label="#">{{freelancer.id}}</td>
                                 <td data-label="##" class="img-circle">
                                     <img src="../static/images/account-img.jpg" alt="image">
                                 </td>
-                                <td data-label="Name">Ahmed Mohammed</td>
-                                <td data-label="Category">Front End</td>
-                                <td data-label="Location">Iraq, Baghdad</td>
-                                <td data-label="Rating">5</td>
+                                <td data-label="Name">{{freelancer.name}}</td>
+                                <td data-label="Category">{{freelancer.category}}</td>
+                                <td data-label="Location">{{freelancer.location}}</td>
+                                <td data-label="Rating">{{freelancer.rating}}</td>
                                 <td data-label="Profile" class="profile">
-                                    <a href="#">
+                                    <a href="/profilesFreelancer/{{freelancer.id}}">
                                         <i class="far fa-id-badge"></i>
                                     </a>
                                 </td>
                                 <td data-label="Action" class="action">
-                                    <a href="#">
+                                    
+                                    <a href="/editFreelancer/{{freelancer.id}}"> 
+                                        <!-- ""/update/{{freelancer.id}}" -->
+                                        <!-- "/user/{{freelancer.id}}" -->
                                         <i class="fas fa-pencil-alt"></i>
                                     </a>
-                                    <a href="#">
+                                    <a href="/deleteFreelancer/{{freelancer.id}}">
                                         <i class="far fa-trash-alt"></i>
                                     </a>
                                 </td>
                             </tr>
-                            <tr>
-                                <td data-label="#">2</td>
-                                <td data-label="##" class="img-circle">
-                                    <img src="../static/images/account-img.jpg" alt="image">
-                                </td>
-                                <td data-label="Name">Ahmed Mohammed</td>
-                                <td data-label="Category">Front End</td>
-                                <td data-label="Location">Iraq, Baghdad</td>
-                                <td data-label="Rating">5</td>
-                                <td data-label="Profile" class="profile">
-                                    <a href="#">
-                                        <i class="far fa-id-badge"></i>
-                                    </a>
-                                </td>
-                                <td data-label="Action" class="action">
-                                    <a href="#">
-                                        <i class="fas fa-pencil-alt"></i>
-                                    </a>
-                                    <a href="#">
-                                        <i class="far fa-trash-alt"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td data-label="#">3</td>
-                                <td data-label="##" class="img-circle">
-                                    <img src="../static/images/account-img.jpg" alt="image">
-                                </td>
-                                <td data-label="Name">Ahmed Mohammed</td>
-                                <td data-label="Category">Front End</td>
-                                <td data-label="Location">Iraq, Baghdad</td>
-                                <td data-label="Rating">5</td>
-                                <td data-label="Profile" class="profile">
-                                    <a href="#">
-                                        <i class="far fa-id-badge"></i>
-                                    </a>
-                                </td>
-                                <td data-label="Action" class="action">
-                                    <a href="#">
-                                        <i class="fas fa-pencil-alt"></i>
-                                    </a>
-                                    <a href="#">
-                                        <i class="far fa-trash-alt"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td data-label="#">4</td>
-                                <td data-label="##" class="img-circle">
-                                    <img src="../static/images/account-img.jpg" alt="image">
-                                </td>
-                                <td data-label="Name">Ahmed Mohammed</td>
-                                <td data-label="Category">Front End</td>
-                                <td data-label="Location">Iraq, Baghdad</td>
-                                <td data-label="Rating">5</td>
-                                <td data-label="Profile" class="profile">
-                                    <a href="#">
-                                        <i class="far fa-id-badge"></i>
-                                    </a>
-                                </td>
-                                <td data-label="Action" class="action">
-                                    <a href="#">
-                                        <i class="fas fa-pencil-alt"></i>
-                                    </a>
-                                    <a href="#">
-                                        <i class="far fa-trash-alt"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td data-label="#">5</td>
-                                <td data-label="##" class="img-circle">
-                                    <img src="../static/images/account-img.jpg" alt="image">
-                                </td>
-                                <td data-label="Name">Ahmed Mohammed</td>
-                                <td data-label="Category">Front End</td>
-                                <td data-label="Location">Iraq, Baghdad</td>
-                                <td data-label="Rating">5</td>
-                                <td data-label="Profile" class="profile">
-                                    <a href="#">
-                                        <i class="far fa-id-badge"></i>
-                                    </a>
-                                </td>
-                                <td data-label="Action" class="action">
-                                    <a href="#">
-                                        <i class="fas fa-pencil-alt"></i>
-                                    </a>
-                                    <a href="#">
-                                        <i class="far fa-trash-alt"></i>
-                                    </a>
-                                </td>
-                            </tr>
-
+                            {% endfor %}
                         </tbody>
                     </table>
-                <!-- End Table -->
+                    <!-- End Table -->
+    
+                </div>
+            </main>
+            <!-- End Main -->
 
                 <!-- Start pagination -->
                 <div class="pagination">
@@ -229,50 +114,7 @@
         </main>
         <!-- End Main -->
 
-        <!-- Start Sidebar -->
-        <div id="sidebar">
-            <div class="sidebar-title">
-                <h2>Business by design</h2>
-                <i
-                  onclick="closeSidebar()"
-                  class="fa fa-times"
-                  id="sidebarIcon"
-                  aria-hidden="true"
-                ></i>
-            </div>
 
-            <section class="sidebar-menu">
-                <div class="sidebar-link active-menu-link">
-                    <i class="fa fa-home"></i>
-                    <a href="/">Dashboard</a>
-                </div>
-                <div class="sidebar-link">
-                    <i class="far fa-building"></i>
-                    <a href="/companies">Company</a>
-                </div>
-                <div class="sidebar-link">
-                    <i class="fas fa-igloo"></i>
-                    <a href="/freelancers">Freelancers</a>
-                </div>
-                <div class="sidebar-link">
-                    <i class="fas fa-users"></i>
-                    <a href="#">Employees</a>
-                </div>
-                <div class="sidebar-link">
-                    <i class="fas fa-calendar-alt"></i>
-                    <a href="#">Calender</a>
-                </div>
-                <div class="sidebar-link">
-                    <i class="fas fa-user-plus"></i>
-                    <a href="/register">Register</a>
-                </div>
-                <div class="sidebar-link">
-                    <i class="fas fa-cog"></i>
-                    <a href="#">Settings</a>
-                </div>
-            </section>
-        </div>
-        <!-- End Sidebar -->
 
 
     </div>
@@ -280,6 +122,4 @@
     
     <!-- Script -->
     <script src="../static/js/js2.js"></script>
-
-</body>
-</html>
+    {% endblock %}

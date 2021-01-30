@@ -4,8 +4,6 @@
     <!-- Meta Tag -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Dashboard Style -->
-    <link rel="stylesheet" href="../static/css/add-company.css">
     <!-- shared-ui -->
     <link rel="stylesheet" href="../static/css/shared-ui.css">
     <!-- Fontawesome -->
@@ -15,12 +13,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <!-- Favicon  -->
     <!-- <link rel="icon" href="../assets/images/favicon-16x16.png" sizes="16x16"> -->
-    <!-- Title -->
-    <title>Add Company</title>
+    {% block head %}
+
+    
+    {% endblock %}
 </head>
+
 <body>
 
-
+  
     <div class="container">
         <!-- Start NavBar -->
         <nav class="navbar">
@@ -38,39 +39,6 @@
             </div>
         </nav>
         <!-- End NavBar -->
-
-        <!-- Start Main -->
-        <main>
-            <div class="main-container">
-                <!-- Start Title -->
-                <div class="title">
-                    <h1>Add Case</h1>
-                </div>
-                <!-- End Title -->
-
-                <!-- Start Form -->
-                <form class="form-section">
-                    <div class="input-left">
-                        <label for="workName">Work Name</label>
-                        <input type="text" id="workName" placeholder="Lorem Ipsum is simply" required>
-                        <label for="clientName">Client name</label>
-                        <input type="text" id="clientName" placeholder="Company X" required>
-                        <label for="serviceProvider">Category</label>
-                        <select id="serviceProvider" class="category">
-                            <option value="company">Company</option>
-                            <option value="freelancer">Freelancer</option>
-                        </select>
-                        <label for="">Provider name</label>
-                        <input type="text" id="" placeholder="Company X" required>
-                        <label for="">Date</label>
-                        <input type="date" id="date" name="date">
-
-                    <button type="submit">Add</button>
-                </form>
-                <!-- End Form -->
-            </div>
-        </main>
-        <!-- End Main -->
 
         <!-- Start Sidebar -->
         <div id="sidebar">
@@ -117,12 +85,12 @@
         </div>
         <!-- End Sidebar -->
 
+        <!-- Start Main -->
+        {% block content %}
+        
 
-    </div>
 
-
-    <!-- Script -->
-    <script src="../static/js/js2.js"></script>
-
+        {% endblock %}
+        <!-- End Main -->
 </body>
 </html>

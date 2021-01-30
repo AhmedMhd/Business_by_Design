@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+    {% block head %}
+    <!-- Dashboard Style -->
+    <link rel="stylesheet" href="../static/css/add-company.css">
+    <!-- Title -->
+    <title>Add Case</title>
+    {% endblock %}
+
+    {% block content %}
+        <!-- Start Main -->
+        <main>
+            <div class="main-container">
+                <!-- Start Title -->
+                <div class="title">
+                    <h1>Add Case</h1>
+                </div>
+                <!-- End Title -->
+
+                <!-- Start Form -->
+                <form class="form-section">
+                    <div class="input-left">
+                        <label for="workName">Work Name</label>
+                        <input type="text" id="workName" placeholder="Lorem Ipsum is simply" >
+
+                        <label for="clientName">Client name</label>
+                        <select id="clientName" class="category">
+                        {% for company in companyDetails %}
+                        <option type="text" placeholder="Company X" value="{{ company.id }}">{{ company.name }}</option>
+                        {% endfor %}
+                        </select>
+
+                        <label for="providerName">Provider name</label>
+                        <select id="providerName" class="category">
+                        {% for company in companyDetails %}
+                        <option type="text"  placeholder="Freelancer X" value="{{ company.id }}">{{ company.name }}</option>
+                        {% endfor %}
+                        </select>
+
+
+                        <label for="">Date</label>
+                        <input type="date" id="date" name="date">
+
+                    <button type="submit">Add</button>
+                </form>
+                <!-- End Form -->
+            </div>
+        </main>
+        <!-- End Main -->
+
+
+
+
+    </div>
+
+
+    <!-- Script -->
+    <script src="../static/js/js2.js"></script>
+    {% endblock %}
+

@@ -1,17 +1,77 @@
-from flask import Flask, render_template, request, redirect
-from flask_mysqldb import MySQL
-import yaml
-
+from flask import Flask, render_template, request, redirect, url_for, flash
+from flask_sqlalchemy import SQLAlchemy
+import flask.ext.whooshalchemy as whooshalchemy
+ 
+ 
 app = Flask(__name__)
+app.secret_key = "Secret Key"
+ 
+#SqlAlchemy Database Configuration With Mysql
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///date.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['WHOOSH_BASE'] = 'whoosh'
+db = SQLAlchemy(app)
+ 
+ 
+#Creating model table for our CRUD database
+class Companies(db.Model):
+    __searchable__ = ['title', 'content']
+    __tablename__ = 'companies'
+    id = db.Column(db.Integer, primary_key = True)
+    name = db.Column(db.String(255))
+    category = db.Column(db.String(255))
+    location = db.Column(db.String(255))
+    phone = db.Column(db.String(255))
+    email = db.Column(db.String(255))
+    description = db.Column(db.String(255))
+    rating = db.Column(db.String(255))
+    def __init__(self, name, category, location, phone, email, description):
+ 
+        self.name = name
+        self.category = category
+        self.location = location
+        self.phone = phone
+        self.email = email
+        self.description = description
+        #self.rating = rating
 
-# Configure db
-db = yaml.load(open('db.yaml'))
-app.config['MYSQL_HOST'] = db['mysql_host']
-app.config['MYSQL_USER'] = db['mysql_user']
-app.config['MYSQL_PASSWORD'] = db['mysql_password']
-app.config['MYSQL_DB'] = db['mysql_db']
+    def __repr__(self):
+        return '<companies {} {} {} {} {} {}>'.format(
+            self.name,
+            self.category,
+            self.location,
+            self.phone,
+            self.email,
+            self.description )
 
-mysql = MySQL(app)
+class Freelancers(db.Model):
+    __tablename__ = 'freelancers'
+    id = db.Column(db.Integer, primary_key = True)
+    name = db.Column(db.String(255))
+    category = db.Column(db.String(255))
+    location = db.Column(db.String(255))
+    phone = db.Column(db.String(255))
+    email = db.Column(db.String(255))
+    description = db.Column(db.String(255))
+    rating = db.Column(db.String(255))
+    def __init__(self, name, category, location, phone, email, description):
+ 
+        self.name = name
+        self.category = category
+        self.location = location
+        self.phone = phone
+        self.email = email
+        self.description = description
+        #self.rating = frating
+
+    def __repr__(self):
+        return '<freelancers {} {} {} {} {} {}>'.format(
+            self.name,
+            self.category,
+            self.location,
+            self.phone,
+            self.email,
+            self.description )
 
 @app.route('/')
 def index():
@@ -19,41 +79,133 @@ def index():
 
 @app.route('/companies', methods=['GET', 'POST'])
 def company():
-    cur = mysql.connection.cursor()
-    resultValue = cur.execute("SELECT * FROM companies")
-    if resultValue > 0:
-        companyDetails = cur.fetchall()
-        return render_template('company.html',companyDetails=companyDetails)
+    companyDetails = Companies.query.all()
+    return render_template("company.html", companyDetails = companyDetails)
 
-@app.route('/companies/addcompany', methods=['GET', 'POST'])
+
+@app.route('/addCompany', methods=['GET', 'POST'])
 def addcompany():
     if request.method == 'POST':
-        # Fetch form data
-        companyDetails = request.form
-        name = companyDetails['name']
-        category = companyDetails['category']
-        location = companyDetails['location']
-        phone_number = companyDetails['phone_number']
-        email = companyDetails['email']
-        description = companyDetails['description']
-        cur = mysql.connection.cursor()
-        cur.execute("INSERT INTO companies(name, category, location, phone_number, email, description) VALUES(%s, %s, %s, %s, %s, %s)",(name, category, location, phone_number, email, description))
-        mysql.connection.commit()
-        cur.close()
+ 
+        name = request.form['name']
+        category = request.form['category']
+        location = request.form['location']
+        phone = request.form['phone']
+        email = request.form['email']
+        description = request.form['description']
+ 
+        my_data = Companies(name, category, location, phone, email, description)
+        db.session.add(my_data)
+        db.session.commit()
+ 
         return redirect('/companies')
     return render_template('addcompany.html')
 
-@app.route('/freelancers')
-def freelancers():
-    return render_template('freelancers.html')
+@app.route('/editCompany/<id>', methods = ['GET', 'POST'])
+def editcompany(id):
+    companyDetails = Companies.query.filter_by(id=id).first_or_404()
+    return render_template('updatecompany.html',companyDetails=companyDetails)
 
-@app.route('/freelancers/addfreelancers')
-def addfreelancers():
+@app.route('/updateCompany/<id>', methods = ['GET', 'POST'])
+def updatecompany(id):
+    if request.method == 'POST':
+        my_data = Companies.query.get(id)
+        #print(request.form.get('id'))
+        #print(request.form['name'])
+        my_data.name = request.form['name']
+        my_data.category = request.form['category']
+        my_data.location = request.form['location']
+        my_data.phone = request.form['phone']
+        my_data.email = request.form['email']
+        my_data.description = request.form['description']
+        db.session.commit()
+        #flash("Employee Updated Successfully")
+        return redirect('/companies')
+
+@app.route('/deleteCompany/<id>', methods = ['GET', 'POST'])
+def deletecompany(id):
+    my_data = Companies.query.get(id)
+    db.session.delete(my_data)
+    db.session.commit()
+    return redirect("/companies")
+
+@app.route('/searchCompany',methods=['GET', 'POST'])
+def searchcompany():
+    results = Companies.query.whoosh_search(request.args.get('name')).all()
+    return render_template('company.html', companyDetails=results)
+
+@app.route('/profilesCompany/<id>')
+def profilecompany(id):
+    companyDetails = Companies.query.filter_by(id=id).first_or_404()
+    #freelancersDetails = Freelancers.query.filter_by(id=id).first_or_404()
+    return render_template('ProfileCompany.html',companyDetails=companyDetails)
+
+
+@app.route('/freelancers', methods=['GET', 'POST'])
+def freelancers():
+    freelancersDetails = Freelancers.query.all()
+    return render_template("freelancers.html",freelancersDetails = freelancersDetails)
+
+@app.route('/addFreelancers', methods=['GET', 'POST'])
+def addfreelancer():
+    if request.method == 'POST':
+        name = request.form['name']
+        category = request.form['category']
+        location = request.form['location']
+        phone = request.form['phone']
+        email = request.form['email']
+        description = request.form['description']
+ 
+        my_data = Freelancers(name, category, location, phone, email, description)
+        db.session.add(my_data)
+        db.session.commit()
+ 
+        return redirect('/freelancers')
     return render_template('addfreelancer.html')
+
+@app.route('/editFreelancer/<id>', methods = ['GET', 'POST'])
+def editfreelancer(id):
+    freelancerDetails = Freelancers.query.filter_by(id=id).first_or_404()
+    return render_template('updatefreelancer.html',freelancerDetails=freelancerDetails)
+
+@app.route('/updateFreelancer/<id>', methods = ['GET', 'POST'])
+def updatefreelancer(id):
+    if request.method == 'POST':
+        my_data = Freelancers.query.get(id)
+        #print(request.form.get('id'))
+        #print(request.form['name'])
+        my_data.name = request.form['name']
+        my_data.category = request.form['category']
+        my_data.location = request.form['location']
+        my_data.phone = request.form['phone']
+        my_data.email = request.form['email']
+        my_data.description = request.form['description']
+        db.session.commit()
+        #flash("Employee Updated Successfully")
+        return redirect('/freelancers')
+
+@app.route('/deleteFreelancer/<id>', methods = ['GET', 'POST'])
+def deletefreelancer(id):
+    my_data = Freelancers.query.get(id)
+    db.session.delete(my_data)
+    db.session.commit()
+    return redirect("/freelancers")
+
+@app.route('/profilesFreelancer/<id>')
+def profilefreelancer(id):
+    freelancersDetails = Freelancers.query.filter_by(id=id).first_or_404()
+    return render_template('ProfileFreelancer.html',freelancersDetails=freelancersDetails)
+
 
 @app.route('/register')
 def register():
     return render_template('register.html')
 
-if __name__ == "__main__": 
-	app.run(host ="localhost", port = int("5000")) 
+@app.route('/addCase')
+def addCase():
+    companyDetails = Companies.query.all()
+    return render_template('addCase.html', companyDetails = companyDetails)
+
+
+if __name__ == "__main__":
+    app.run(debug=True)

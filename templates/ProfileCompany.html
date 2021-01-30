@@ -1,43 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <!-- Meta Tag -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends "layout.html" %}
+    {% block head %}
     <!-- Profile Style -->
     <link rel="stylesheet" href="../static/css/profile.css">
-    <!-- shared-ui -->
-    <link rel="stylesheet" href="../static/css/shared-ui.css">
-    <!-- Fontawesome -->
-    <link rel="stylesheet" href="../static/css/all.min.css">
-    <!-- Font -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-    <!-- Favicon  -->
-    <!-- <link rel="icon" href="../assets/images/favicon-16x16.png" sizes="16x16"> -->
     <!-- Title -->
     <title>Profile</title>
-</head>
-<body>
+    {% endblock %}
 
-    <div class="container">
-        <!-- Start NavBar -->
-        <nav class="navbar">
-            <div class="nav-icon" onclick="toggleSidebar()">
-                <i class="fas fa-bars"></i>
-            </div>
-            <div class="navbar-right">
-                <a href="#">
-                    <img src="../static/images/manager.png" alt="img" width="30" >
-                    <div class="account">
-                        <span>Ahmed Mhd</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                </a>
-            </div>
-        </nav>
-        <!-- End NavBar -->
 
+    {% block content %}
         <!-- Start Main -->
         <main>
             <div class="main-container">
@@ -46,9 +16,9 @@
                     <div class="user-img">
                         <img src="../static/images/account-img.jpg" alt="account-img">
                     </div>
-                    <h2>Ahmed Mohammed</h2>
-                    <p>Font End & Back End</p>
-                    <a href="#" class="edit-profile-btn">Edit Profile</a>
+                    <h2>"{{companyDetails.name}}"</h2>
+                    <p>"{{companyDetails.category}}"</p>
+                    <a href="/user/{{companyDetails.id}}" class="edit-profile-btn">Edit Profile</a>
                 </div>
                 <!-- End Profile Info -->
 
@@ -250,8 +220,7 @@
                         <h4>Description</h4>
                         <div class="description-box">
                             <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
-                                Lorem Ipsum is simply dummy text of the printing and
+                                {{companyDetails.description}}
                             </p>
                         </div>
                     </div>
@@ -261,15 +230,15 @@
                         <div class="contact-card">
                             <div class="location card">
                                 <i class="fas fa-map-marker-alt"></i>
-                                <p>Iraq, Baghdad</p>
+                                <p>{{companyDetails.location}}</p>
                             </div>
                             <div class="email card">
                                 <i class="fas fa-envelope"></i>
-                                <p>ahmed@gmail.com</p>
+                                <p>{{companyDetails.email}}</p>
                             </div>
                             <div class="phone card">
                                 <i class="fas fa-phone"></i>
-                                <p>+009343235</p>
+                                <p>{{companyDetails.phone}}</p>
                             </div>
                             <div class="social card">
                                 <a href="#"><i class="fab fa-facebook-square"></i></a>
@@ -309,54 +278,10 @@
         </main>
         <!-- End Main -->
 
-        <!-- Start Sidebar -->
-        <div id="sidebar">
-            <div class="sidebar-title">
-                <h2>Business by design</h2>
-                <i
-                  onclick="closeSidebar()"
-                  class="fa fa-times"
-                  id="sidebarIcon"
-                  aria-hidden="true"
-                ></i>
-            </div>
 
-            <section class="sidebar-menu">
-                <div class="sidebar-link active-menu-link">
-                    <i class="fa fa-home"></i>
-                    <a href="/">Dashboard</a>
-                </div>
-                <div class="sidebar-link">
-                    <i class="far fa-building"></i>
-                    <a href="/companies">Company</a>
-                </div>
-                <div class="sidebar-link">
-                    <i class="fas fa-igloo"></i>
-                    <a href="/freelancers">Freelancers</a>
-                </div>
-                <div class="sidebar-link">
-                    <i class="fas fa-users"></i>
-                    <a href="#">Employees</a>
-                </div>
-                <div class="sidebar-link">
-                    <i class="fas fa-calendar-alt"></i>
-                    <a href="#">Calender</a>
-                </div>
-                <div class="sidebar-link">
-                    <i class="fas fa-user-plus"></i>
-                    <a href="/register">Register</a>
-                </div>
-                <div class="sidebar-link">
-                    <i class="fas fa-cog"></i>
-                    <a href="#">Settings</a>
-                </div>
-            </section>
-        </div>
-        <!-- End Sidebar -->
 
 
     </div>
 
     <script src="../static/js/js2.js"></script>
-</body>
-</html>
+{% endblock %}

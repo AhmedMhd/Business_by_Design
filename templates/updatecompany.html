@@ -3,7 +3,7 @@
     <!-- Dashboard Style -->
     <link rel="stylesheet" href="../static/css/add-company.css">
     <!-- Title -->
-    <title>Add Company</title>
+    <title>Update Company</title>
     {% endblock %}
 
 
@@ -13,24 +13,24 @@
             <div class="main-container">
                 <!-- Start Title -->
                 <div class="title">
-                    <h1>Add Company</h1>
+                    <h1>Update Company</h1>
                 </div>
                 <!-- End Title -->
 
                 <!-- Start Form -->
-                <form action="{{url_for('addcompany')}}" method="POST">
+                <form action="/updateCompany/{{companyDetails.id}}" method="POST">
                     <div class="input-left">
                       <label for="company">Company Name</label>
-                      <input name="name" type="text" id="company" />
+                      <input name="name" type="text" id="company" value="{{companyDetails.name}}" />
                   
                       <label for="category">Category</label>
-                        <input name="category" id="category" type="text" >
-                  
+                        <input name="category" id="category" type="text" value="{{companyDetails.category}}">
+
                         <label for="location">Location</label>
-                        <input name = "location" type="text" id="location" placeholder="Iraq, Baghdad" >
+                        <input name = "location" type="text" id="location" placeholder="Iraq, Baghdad" value="{{companyDetails.location}}" >
 
                         <label for="real-file">Upload image</label>
-                        <input type="file" id="real-file" hidden="hidden">
+                        <input type="file" id="real-file" hidden="hidden" >
                         <button type="button" id="custom-button">
                             Browse File
                             <!-- <i class="fas fa-upload"></i> -->
@@ -40,18 +40,18 @@
                     </div>
                     <div class="input-right">
                         <label for="phone">Phone number</label>
-                        <input name="phone" type="text" id="phone" placeholder="07713522385" >
+                        <input name="phone" type="text" id="phone" placeholder="07713522385" value="{{companyDetails.phone}}" >
                       
                         <label for="email">Email</label>
-                        <input name="email" type="email" id="email" placeholder="ahmed1@gmail.com" >
+                        <input name="email" type="email" id="email" placeholder="ahmed1@gmail.com" value="{{companyDetails.email}}" >
                       
                         <label for="description">Description</label>
-                        <input name="description" id="description" width="80" height="48" placeholder="Lorem Ipsum is simply dummy text of the printin and typesetting industry."> 
-                      <button type="submit">Add</button>
+                        <input name="description" id="description" width="80" height="48" placeholder="Lorem Ipsum is simply dummy text of the printin and typesetting industry." value="{{companyDetails.description}}"></textarea>
+                      </div>
+                      <button type="submit">Update</button>
                     </form>
                       
                 <!-- End Form -->
-
             </div>
         </main>
         <!-- End Main -->

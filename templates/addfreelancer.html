@@ -1,44 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <!-- Meta Tag -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends "layout.html" %}
+    {% block head %}
     <!-- Dashboard Style -->
     <link rel="stylesheet" href="../static/css/add-company.css">
-    <!-- shared-ui -->
-    <link rel="stylesheet" href="../static/css/shared-ui.css">
-    <!-- Fontawesome -->
-    <link rel="stylesheet" href="../static/css/all.min.css">
-    <!-- Font -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-    <!-- Favicon  -->
-    <!-- <link rel="icon" href="../assets/images/favicon-16x16.png" sizes="16x16"> -->
     <!-- Title -->
     <title>Add Freelancer</title>
-</head>
-<body>
-
-
-    <div class="container">
-        <!-- Start NavBar -->
-        <nav class="navbar">
-            <div class="nav-icon" onclick="toggleSidebar()">
-                <i class="fas fa-bars"></i>
-            </div>
-            <div class="navbar-right">
-                <a href="#">
-                    <img src="../static/images/manager.png" alt="img" width="30" >
-                    <div class="account">
-                        <span>Ahmed Mhd</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                </a>
-            </div>
-        </nav>
-        <!-- End NavBar -->
-
+    {% endblock %}
+    {% block content %}
         <!-- Start Main -->
         <main>
             <div class="main-container">
@@ -49,19 +16,16 @@
                 <!-- End Title -->
 
                 <!-- Start Form -->
-                <form class="form-section">
+                <form action="/addFreelancers" method="POST" class="form-section">
                     <div class="input-left">
-                        <label for="email">Freelancer Name</label>
-                        <input type="text" id="text" placeholder="Company X" required>
-                        <label for="">Category</label>
-                        <select id="category" class="category">
-                            <option value="company">Marketing</option>
-                            <option value="freelancers">Front End</option>
-                            <option value="company">UI & UX</option>
-                            <option value="freelancers">Back End</option>
-                        </select>
-                        <label for="location">Location</label>
-                        <input type="text" id="location" placeholder="Iraq, Baghdad" required>
+                        <label for="company">Freelancer Name</label>
+                        <input name="name" type="text" id="company" />
+                    
+                        <label for="category">Category</label>
+                          <input name="category" id="category" type="text" >
+                    
+                          <label for="location">Location</label>
+                          <input name = "location" type="text" id="location" placeholder="Iraq, Baghdad" >
 
                         <label for="real-file">Upload image</label>
                         <input type="file" id="real-file" hidden="hidden">
@@ -73,12 +37,14 @@
                         <span id="custom-text"></span>
                     </div>
                     <div class="input-right">
-                        <label for="phone_number">Phone number</label>
-                        <input type="text" id="phone_number" placeholder="07713522385" required>
+                        <label for="phone">Phone number</label>
+                        <input name="phone" type="text" id="phone" placeholder="07713522385" >
+                      
                         <label for="email">Email</label>
-                        <input type="email" id="email" placeholder="ahmed1@gmail.com" required>
+                        <input name="email" type="email" id="email" placeholder="ahmed1@gmail.com" >
+                      
                         <label for="description">Description</label>
-                        <textarea name="description" id="description" cols="40" rows="10" placeholder="Lorem Ipsum is simply dummy text of the printin and typesetting industry."></textarea>
+                        <input name="description" id="description" width="80" height="48" placeholder="Lorem Ipsum is simply dummy text of the printin and typesetting industry."> 
                     </div>
 
                     <button type="submit">Add</button>
@@ -88,50 +54,11 @@
         </main>
         <!-- End Main -->
 
-        <!-- Start Sidebar -->
-        <div id="sidebar">
-            <div class="sidebar-title">
-                <h2>Business by design</h2>
-                <i
-                  onclick="closeSidebar()"
-                  class="fa fa-times"
-                  id="sidebarIcon"
-                  aria-hidden="true"
-                ></i>
-            </div>
 
-            <section class="sidebar-menu">
-                <div class="sidebar-link active-menu-link">
-                    <i class="fa fa-home"></i>
-                    <a href="/">Dashboard</a>
-                </div>
-                <div class="sidebar-link">
-                    <i class="far fa-building"></i>
-                    <a href="/companies">Company</a>
-                </div>
-                <div class="sidebar-link">
-                    <i class="fas fa-igloo"></i>
-                    <a href="/freelancers">Freelancers</a>
-                </div>
-                <div class="sidebar-link">
-                    <i class="fas fa-users"></i>
-                    <a href="#">Employees</a>
-                </div>
-                <div class="sidebar-link">
-                    <i class="fas fa-calendar-alt"></i>
-                    <a href="#">Calender</a>
-                </div>
-                <div class="sidebar-link">
-                    <i class="fas fa-user-plus"></i>
-                    <a href="/register">Register</a>
-                </div>
-                <div class="sidebar-link">
-                    <i class="fas fa-cog"></i>
-                    <a href="#">Settings</a>
-                </div>
-            </section>
-        </div>
-        <!-- End Sidebar -->
+
+
+
+
 
 
     </div>
@@ -139,6 +66,4 @@
 
     <!-- Script -->
     <script src="../static/../static/js/js2.js"></script>
-
-</body>
-</html>
+{% endblock %}

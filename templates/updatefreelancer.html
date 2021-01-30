@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+    {% block head %}
+    <!-- Dashboard Style -->
+    <link rel="stylesheet" href="../static/css/add-company.css">
+    <!-- Title -->
+    <title>Update Freelancer</title>
+    {% endblock %}
+    {% block content %}
+    <!-- Start Main -->
+    <main>
+        <div class="main-container">
+            <!-- Start Title -->
+            <div class="title">
+                <h1>Update Freelancer</h1>
+            </div>
+            <!-- End Title -->
+            <!-- <div id="modaledit{{freelancerDetails.id}}"  -->
+            <!-- Start Form -->
+            <form action="/updateFreelancer/{{freelancerDetails.id}}" method="POST">
+                <div class="input-left">
+                  <label for="company">Company Name</label>
+                  <input name="name" type="text" id="company" value="{{freelancerDetails.name}}" />
+              
+                  <label for="category">Category</label>
+                    <input name="category" id="category" type="text" value="{{freelancerDetails.category}}">
+
+                    <label for="location">Location</label>
+                    <input name = "location" type="text" id="location" placeholder="Iraq, Baghdad" value="{{freelancerDetails.location}}" >
+
+                    <label for="real-file">Upload image</label>
+                    <input type="file" id="real-file" hidden="hidden" >
+                    <button type="button" id="custom-button">
+                        Browse File
+                        <!-- <i class="fas fa-upload"></i> -->
+                        <img src="../assets/images/upload.svg" alt="" >
+                    </button>
+                    <span id="custom-text"></span>
+                </div>
+                <div class="input-right">
+                    <label for="phone">Phone number</label>
+                    <input name="phone" type="text" id="phone" placeholder="07713522385" value="{{freelancerDetails.phone}}" >
+                  
+                    <label for="email">Email</label>
+                    <input name="email" type="email" id="email" placeholder="ahmed1@gmail.com" value="{{freelancerDetails.email}}" >
+                  
+                    <label for="description">Description</label>
+                    <input name="description" id="description" width="80" height="48" placeholder="Lorem Ipsum is simply dummy text of the printin and typesetting industry." value="{{freelancerDetails.description}}"></textarea>
+                  </div>
+                  <button type="submit">Update</button>
+                </form>
+                  
+            <!-- End Form -->
+        </div>
+    </main>
+    <!-- End Main -->
+
+
+</div>
+
+
+<!-- Script -->
+<script src="../static/js/js2.js"></script>
+
+{% endblock %}
