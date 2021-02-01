@@ -15,8 +15,7 @@
     width: 100%;
     width: 400px;
     height: 510px;
-    margin: 300px auto;
-    transform: translate(-50%, -50%);
+    margin: 100px auto;
 }
 
 
@@ -31,7 +30,7 @@
     display: inline-block;
     font-size: 15px;
     margin-bottom: 30px;
-    color: var(--lightPurple);
+    color: var(--darkBlue);
 }
 
 .register a {

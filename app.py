@@ -1,10 +1,11 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
-import flask.ext.whooshalchemy as whooshalchemy
+
  
  
 app = Flask(__name__)
 app.secret_key = "Secret Key"
+ 
  
 #SqlAlchemy Database Configuration With Mysql
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///date.db'

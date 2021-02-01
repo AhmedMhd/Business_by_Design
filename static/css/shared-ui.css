@@ -65,6 +65,8 @@
     /* display: none; 
 }
 */
+
+
 .nav-icon > i {
     font-size: 25px;
     color: #ffffff;
@@ -150,8 +152,7 @@ main {
 
 
 .sidebar-title h2 {
-    font-size: 22px;
-    text-align: left;
+    font-size: 28px;
     margin-left: 15px;
 }
 
