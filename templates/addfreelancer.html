@@ -19,7 +19,7 @@
                 <form action="/addFreelancers" method="POST" class="form-section">
                     <div class="input-left">
                         <label for="company">Freelancer Name</label>
-                        <input name="name" type="text" id="company" />
+                        <input name="name" type="text" id="company" required />
                     
                         <label for="category">Category</label>
                           <input name="category" id="category" type="text" >
@@ -39,12 +39,16 @@
                     <div class="input-right">
                         <label for="phone">Phone number</label>
                         <input name="phone" type="text" id="phone" placeholder="07713522385" >
+
                       
                         <label for="email">Email</label>
                         <input name="email" type="email" id="email" placeholder="ahmed1@gmail.com" >
+
+                        <label for="rating">Rating</label>
+                        <input name="rating" type="text" id="rating" placeholder="1, 2, .. ,5" >
                       
                         <label for="description">Description</label>
-                        <input name="description" id="description" width="80" height="48" placeholder="Lorem Ipsum is simply dummy text of the printin and typesetting industry."> 
+                        <input name="description" id="description" width="80" height="48" placeholder="Lorem Ipsum is simply dummy text of the printin and typesetting industry." > 
                     </div>
 
                     <button type="submit">Add</button>

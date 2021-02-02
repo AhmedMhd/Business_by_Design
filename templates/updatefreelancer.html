@@ -16,7 +16,7 @@
             <!-- End Title -->
             <!-- <div id="modaledit{{freelancerDetails.id}}"  -->
             <!-- Start Form -->
-            <form action="/updateFreelancer/{{freelancerDetails.id}}" method="POST">
+            <form action="/updateFreelancer/{{freelancerDetails.id}}" method="POST" class="form-section">
                 <div class="input-left">
                   <label for="company">Company Name</label>
                   <input name="name" type="text" id="company" value="{{freelancerDetails.name}}" />
@@ -42,9 +42,12 @@
                   
                     <label for="email">Email</label>
                     <input name="email" type="email" id="email" placeholder="ahmed1@gmail.com" value="{{freelancerDetails.email}}" >
+
+                    <label for="rating">Rating</label>
+                    <input name="rating" type="text" id="rating" placeholder="1, 2, .. ,5" value="{{freelancerDetails.rating}}">
                   
                     <label for="description">Description</label>
-                    <input name="description" id="description" width="80" height="48" placeholder="Lorem Ipsum is simply dummy text of the printin and typesetting industry." value="{{freelancerDetails.description}}"></textarea>
+                    <input name="description" id="description" width="80" height="48" placeholder="Lorem Ipsum is simply dummy text of the printin and typesetting industry." value="{{freelancerDetails.description}}">
                   </div>
                   <button type="submit">Update</button>
                 </form>

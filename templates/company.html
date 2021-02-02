@@ -18,22 +18,22 @@
 
                 <!-- Start Filters Section-->
                 <div class="main-filters">
-                    <form action="" class="search">
-                        <input type="text" placeholder="Search" name="search" class="box">
+                    <form action="/companies" method="POST" class="search">
+                        <input name="name" type="text" placeholder="Search" name="search" class="box">
                         <!-- <span class="icon">
                             <i class="fas fa-search"></i>
                         </span> -->
                     </form>
-                    <select id="provider" class="provider box">
-                        <option value="company">Marketing</option>
-                        <option value="freelancers">Front End</option>
-                        <option value="company">UI & UX</option>
-                        <option value="freelancers">Back End</option>
+                    <select name="category" id="provider" class="provider box">
+                        <option value="Marketing">Marketing</option>
+                        <option value="Front End">Front End</option>
+                        <option value="UI & UX">UI & UX</option>
+                        <option value="Back End">Back End</option>
                     </select>
-                    <select id="rating" class="rating box">
-                        <option value="4.5">5 Rating</option>
-                        <option value="3.4">4 Rating</option>
-                        <option value="3.4">3 Rating</option>
+                    <select name="rating" id="rating" class="rating box">
+                        <option value="5">5 Rating</option>
+                        <option value="4">4 Rating</option>
+                        <option value="3">3 Rating</option>
                         <option value="3">2 Rating</option>
                         <option value="1">1 Rating</option>
                     </select>

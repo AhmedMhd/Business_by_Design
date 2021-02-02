@@ -58,7 +58,7 @@
                             <th>Action</th>
                         </thead>
                         <tbody>
-                            {% for freelancer in freelancersDetails %}
+                            {% for freelancer in freelancersDetails.items %}
                             <tr>
                                 <td data-label="#">{{freelancer.id}}</td>
                                 <td data-label="##" class="img-circle">
@@ -89,20 +89,32 @@
                         </tbody>
                     </table>
                     <!-- End Table -->
+                    
 
                     <!-- Start pagination -->
                     <div class="pagination">
-                        <a href="#" class="arrow-left">
+
+                        {% if freelancersDetails.has_prev %}
+                        <a href="{{ url_for('freelancers',page=freelancersDetails.prev_num) }}" class="arrow-left">
                             <i class="fas fa-chevron-left"></i>
                         </a>
-                        <span class="page-number">
-                            <span>1</span>
-                            OF
-                            <span>10</span>
-                        </span>
-                        <a href="#" class="arrow-right">
+
+                          {% endif %}
+
+                    {% for page_num in freelancersDetails.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+                        {% if page_num %}
+                            <a class="page-number" href="{{ url_for('freelancers',page=page_num) }}" >{{ page_num }}</a>
+                        {% else%}
+                            ...
+
+                        {% endif %}
+                    {% endfor %}
+
+                        {% if freelancersDetails.has_next %}
+                        <a href="{{ url_for('freelancers',page=freelancersDetails.next_num) }}" class="arrow-right">
                             <i class="fas fa-chevron-right"></i>
                         </a>
+                        {% endif %}
                     </div>
                     <!-- End pagination -->
     

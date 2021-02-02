@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 myenv/
 # Created by https://www.toptal.com/developers/gitignore/api/flask
 # Edit at https://www.toptal.com/developers/gitignore?templates=flask
@@ -147,3 +148,6 @@ dmypy.json
 .prof
 
 # End of https://www.toptal.com/developers/gitignore/api/flask
+=======
+__pycache__
+>>>>>>> 08e0827e019be621698843dc8906b9b7ffd04d42

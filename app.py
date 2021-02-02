@@ -8,7 +8,7 @@ app.secret_key = "Secret Key"
  
  
 #SqlAlchemy Database Configuration With Mysql
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///date.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///date2.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['WHOOSH_BASE'] = 'whoosh'
 db = SQLAlchemy(app)
@@ -26,23 +26,25 @@ class Companies(db.Model):
     email = db.Column(db.String(255))
     description = db.Column(db.String(255))
     rating = db.Column(db.String(255))
-    def __init__(self, name, category, location, phone, email, description):
+    def __init__(self, name, category, location, phone, email, rating, description):
  
         self.name = name
         self.category = category
         self.location = location
         self.phone = phone
         self.email = email
+        self.rating = rating
         self.description = description
-        #self.rating = rating
+        
 
     def __repr__(self):
-        return '<companies {} {} {} {} {} {}>'.format(
+        return '<companies {} {} {} {} {} {} {}>'.format(
             self.name,
             self.category,
             self.location,
             self.phone,
             self.email,
+            self.rating,
             self.description )
 
 class Freelancers(db.Model):
@@ -55,23 +57,25 @@ class Freelancers(db.Model):
     email = db.Column(db.String(255))
     description = db.Column(db.String(255))
     rating = db.Column(db.String(255))
-    def __init__(self, name, category, location, phone, email, description):
+    def __init__(self, name, category, location, phone, email, rating, description):
  
         self.name = name
         self.category = category
         self.location = location
         self.phone = phone
         self.email = email
+        self.rating = rating
         self.description = description
-        #self.rating = frating
+        
 
     def __repr__(self):
-        return '<freelancers {} {} {} {} {} {}>'.format(
+        return '<freelancers {} {} {} {} {} {} {}>'.format(
             self.name,
             self.category,
             self.location,
             self.phone,
             self.email,
+            self.rating,
             self.description )
 
 @app.route('/')
@@ -80,9 +84,22 @@ def index():
 
 @app.route('/companies', methods=['GET', 'POST'])
 def company():
+    if request.method == 'POST' :
+        name= request.form['name']
+        companyDetails = Companies.query.filter(Companies.name.like(name)).all()
+        return render_template("company.html", companyDetails = companyDetails)
     companyDetails = Companies.query.all()
     return render_template("company.html", companyDetails = companyDetails)
 
+# query = SPInfo.query
+# if stratum:
+#     query = query.filter(SPInfo.Stratum == stratum)
+# if origin:
+#     query = query.filter(SPInfo.Origin == origin)
+# if elev:
+#     query = query.filter(SPInfo.Elevation.contains(elev))
+
+# results = query.all()
 
 @app.route('/addCompany', methods=['GET', 'POST'])
 def addcompany():
@@ -93,9 +110,10 @@ def addcompany():
         location = request.form['location']
         phone = request.form['phone']
         email = request.form['email']
+        rating = request.form['rating']
         description = request.form['description']
  
-        my_data = Companies(name, category, location, phone, email, description)
+        my_data = Companies(name, category, location, phone, email, rating, description)
         db.session.add(my_data)
         db.session.commit()
  
@@ -118,6 +136,7 @@ def updatecompany(id):
         my_data.location = request.form['location']
         my_data.phone = request.form['phone']
         my_data.email = request.form['email']
+        my_data.rating = request.form['rating']
         my_data.description = request.form['description']
         db.session.commit()
         #flash("Employee Updated Successfully")
@@ -144,7 +163,8 @@ def profilecompany(id):
 
 @app.route('/freelancers', methods=['GET', 'POST'])
 def freelancers():
-    freelancersDetails = Freelancers.query.all()
+    page = request.args.get('page', 1, type=int)
+    freelancersDetails = Freelancers.query.order_by(Freelancers.name.desc()).paginate(page=page, per_page=5)
     return render_template("freelancers.html",freelancersDetails = freelancersDetails)
 
 @app.route('/addFreelancers', methods=['GET', 'POST'])
@@ -155,9 +175,10 @@ def addfreelancer():
         location = request.form['location']
         phone = request.form['phone']
         email = request.form['email']
+        rating = request.form['rating']
         description = request.form['description']
  
-        my_data = Freelancers(name, category, location, phone, email, description)
+        my_data = Freelancers(name, category, location, phone, email, rating, description)
         db.session.add(my_data)
         db.session.commit()
  
@@ -180,6 +201,7 @@ def updatefreelancer(id):
         my_data.location = request.form['location']
         my_data.phone = request.form['phone']
         my_data.email = request.form['email']
+        my_data.rating = request.form['rating']
         my_data.description = request.form['description']
         db.session.commit()
         #flash("Employee Updated Successfully")
