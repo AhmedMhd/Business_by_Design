@@ -18,16 +18,16 @@
                 <!-- Start Form -->
                 <form action="/addFreelancers" method="POST" class="form-section">
                     <div class="input-left">
-                        <label for="company">Freelancer Name</label>
+                        <label for="company">Freelancer Name *</label>
                         <input name="name" type="text" id="company" required />
                     
-                        <label for="category">Category</label>
-                          <input name="category" id="category" type="text" >
+                        <label for="category">Category *</label>
+                          <input name="category" id="category" type="text" required>
                     
-                          <label for="location">Location</label>
-                          <input name = "location" type="text" id="location" placeholder="Iraq, Baghdad" >
+                          <label for="location">Location *</label>
+                          <input name = "location" type="text" id="location"  required>
 
-                        <label for="real-file">Upload image</label>
+                        <label for="real-file">Upload image *</label>
                         <input type="file" id="real-file" hidden="hidden">
                         <button type="button" id="custom-button">
                             Browse File
@@ -37,18 +37,18 @@
                         <span id="custom-text"></span>
                     </div>
                     <div class="input-right">
-                        <label for="phone">Phone number</label>
-                        <input name="phone" type="text" id="phone" placeholder="07713522385" >
+                        <label for="phone">Phone number *</label>
+                        <input name="phone" type="text" id="phone" required>
 
                       
-                        <label for="email">Email</label>
-                        <input name="email" type="email" id="email" placeholder="ahmed1@gmail.com" >
+                        <label for="email">Email *</label>
+                        <input name="email" type="email" id="email" required>
 
-                        <label for="rating">Rating</label>
-                        <input name="rating" type="text" id="rating" placeholder="1, 2, .. ,5" >
+                        <label for="rating">Rating *</label>
+                        <input name="rating" type="text" id="rating" placeholder="1, 2, .. ,5" required>
                       
-                        <label for="description">Description</label>
-                        <input name="description" id="description" width="80" height="48" placeholder="Lorem Ipsum is simply dummy text of the printin and typesetting industry." > 
+                        <label for="description">Description *</label>
+                        <input name="description" id="description" width="80" height="48" required> 
                     </div>
 
                     <button type="submit">Add</button>
