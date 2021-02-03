@@ -57,7 +57,7 @@
                         <th>Action</th>
                     </thead>
                     <tbody>
-                        {% for company in companyDetails %}
+                        {% for company in companyDetails.items %}
                         <tr>
                             <td data-label="#">{{company.id}}</td>
                             <td data-label="##" class="img-circle">
@@ -68,7 +68,7 @@
                             <td data-label="Location">{{company.location}}</td>
                             <td data-label="Rating">{{company.rating}}</td>
                             <td data-label="Profile" class="profile">
-                                <a href="/profilesCompany/{{company.id}}">
+                                <a href="/profilesCompany/{{company.name}}">
                                     <i class="far fa-id-badge"></i>
                                 </a>
                             </td>
@@ -89,21 +89,32 @@
                 </table>
                 <!-- End Table -->
 
-                <!-- Start pagination -->
-                <div class="pagination">
-                    <a href="#" class="arrow-left">
-                        <i class="fas fa-chevron-left"></i>
-                    </a>
-                    <span class="page-number">
-                        <span>1</span>
-                        OF
-                        <span>10</span>
-                    </span>
-                    <a href="#" class="arrow-right">
-                        <i class="fas fa-chevron-right"></i>
-                    </a>
-                </div>
-                <!-- End pagination -->
+                    <!-- Start pagination -->
+                    <div class="pagination">
+
+                        {% if companyDetails.has_prev %}
+                        <a href="{{ url_for('freelancers',page=companyDetails.prev_num) }}" class="arrow-left">
+                            <i class="fas fa-chevron-left"></i>
+                        </a>
+
+                          {% endif %}
+
+                    {% for page_num in companyDetails.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+                        {% if page_num %}
+                            <a class="page-number" href="{{ url_for('company',page=page_num) }}" >{{ page_num }}</a>
+                        {% else%}
+                            ...
+
+                        {% endif %}
+                    {% endfor %}
+
+                        {% if companyDetails.has_next %}
+                        <a href="{{ url_for('company',page=companyDetails.next_num) }}" class="arrow-right">
+                            <i class="fas fa-chevron-right"></i>
+                        </a>
+                        {% endif %}
+                    </div>
+                    <!-- End pagination -->
 
             </div>
         </main>

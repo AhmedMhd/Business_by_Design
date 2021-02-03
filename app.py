@@ -1,9 +1,10 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, session
 from flask_bootstrap import Bootstrap
 from flask_wtf import FlaskForm 
 from wtforms import StringField, PasswordField, BooleanField
 from wtforms.validators import InputRequired, Email, Length
 from flask_sqlalchemy  import SQLAlchemy
+from sqlalchemy import func
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
  
@@ -12,8 +13,9 @@ app = Flask(__name__)
 app.secret_key = "Secret Key"
  
  
+
 #SqlAlchemy Database Configuration With Mysql
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///date3.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///date4.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 bootstrap = Bootstrap(app)
@@ -22,6 +24,7 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
  
+
 #Creating model table for our CRUD database
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -61,6 +64,7 @@ class Companies(db.Model):
             self.rating,
             self.description )
 
+
 class Freelancers(db.Model):
     __tablename__ = 'freelancers'
     id = db.Column(db.Integer, primary_key = True)
@@ -81,7 +85,6 @@ class Freelancers(db.Model):
         self.rating = rating
         self.description = description
         
-
     def __repr__(self):
         return '<freelancers {} {} {} {} {} {} {}>'.format(
             self.name,
@@ -91,6 +94,28 @@ class Freelancers(db.Model):
             self.email,
             self.rating,
             self.description )
+
+class Cases(db.Model):
+    __tablename__ = 'cases'
+    id = db.Column(db.Integer, primary_key = True)
+    name = db.Column(db.String(255))
+    clientName = db.Column(db.String(255))
+    providerName = db.Column(db.String(255))
+    date = db.Column(db.String(255))
+    def __init__(self, name, clientName, providerName, date):
+ 
+        self.name = name
+        self.clientName = clientName
+        self.providerName = providerName
+        self.date = date
+        
+
+    def __repr__(self):
+        return '<cases {} {} {} {}>'.format(
+            self.name,
+            self.clientName,
+            self.providerName,
+            self.date)
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -148,16 +173,19 @@ def logout():
 @app.route('/dashboard')
 @login_required
 def index():
-    return render_template('dashboard.html')
+    Companies_count = db.session.query(Companies).count()
+    Freelancers_count = db.session.query(Freelancers).count()
+    Cases_count = db.session.query(Cases).count()
+    return render_template('dashboard.html', Companies_count=Companies_count, Freelancers_count=Freelancers_count, Cases_count=Cases_count)
 
 @app.route('/companies', methods=['GET', 'POST'])
 @login_required
 def company():
+    page = request.args.get('page', 1, type=int)
+    companyDetails = Companies.query.order_by(Companies.id.desc()).paginate(page=page, per_page=5)
     if request.method == 'POST' :
         name= request.form['name']
         companyDetails = Companies.query.filter(Companies.name.like(name)).all()
-        return render_template("company.html", companyDetails = companyDetails)
-    companyDetails = Companies.query.all()
     return render_template("company.html", companyDetails = companyDetails)
 
 # query = SPInfo.query
@@ -228,19 +256,22 @@ def searchcompany():
     results = Companies.query.whoosh_search(request.args.get('name')).all()
     return render_template('company.html', companyDetails=results)
 
-@app.route('/profilesCompany/<id>')
+@app.route('/profilesCompany/<name>')
 @login_required
-def profilecompany(id):
-    companyDetails = Companies.query.filter_by(id=id).first_or_404()
-    #freelancersDetails = Freelancers.query.filter_by(id=id).first_or_404()
-    return render_template('ProfileCompany.html',companyDetails=companyDetails)
+def profilecompany(name):
+    companyDetails = Companies.query.filter_by(name=name).first_or_404()
+    casesDetails = Cases.query.filter_by(clientName=name).all()
+    return render_template('ProfileCompany.html',companyDetails=companyDetails, casesDetails=casesDetails)
 
 
 @app.route('/freelancers', methods=['GET', 'POST'])
 @login_required
 def freelancers():
     page = request.args.get('page', 1, type=int)
-    freelancersDetails = Freelancers.query.order_by(Freelancers.name.desc()).paginate(page=page, per_page=5)
+    freelancersDetails = Freelancers.query.order_by(Freelancers.id.desc()).paginate(page=page, per_page=5)
+    if request.method == 'POST' :
+        name= request.form['name']
+        freelancersDetails = Freelancers.query.filter(Freelancers.name.like(name)).all()
     return render_template("freelancers.html",freelancersDetails = freelancersDetails)
 
 @app.route('/addFreelancers', methods=['GET', 'POST'])
@@ -294,18 +325,31 @@ def deletefreelancer(id):
     db.session.commit()
     return redirect("/freelancers")
 
-@app.route('/profilesFreelancer/<id>')
+@app.route('/profilesFreelancer/<name>')
 @login_required
-def profilefreelancer(id):
-    freelancersDetails = Freelancers.query.filter_by(id=id).first_or_404()
-    return render_template('ProfileFreelancer.html',freelancersDetails=freelancersDetails)
+def profilefreelancer(name):
+    freelancersDetails = Freelancers.query.filter_by(name=name).first_or_404()
+    casesDetails = Cases.query.filter_by(providerName=name).all()
+    return render_template('ProfileFreelancer.html',freelancersDetails=freelancersDetails, casesDetails=casesDetails)
 
 
-@app.route('/addCase')
+@app.route('/addCase', methods = ['GET', 'POST'])
 @login_required
 def addCase():
+    freelancersDetails = Freelancers.query.all()
     companyDetails = Companies.query.all()
-    return render_template('addCase.html', companyDetails = companyDetails)
+    if request.method == 'POST':
+        name = request.form['name']
+        clientName = request.form['clientName']
+        providerName = request.form['providerName']
+        date = request.form['date']
+ 
+        my_data = Cases(name, clientName, providerName, date)
+        db.session.add(my_data)
+        db.session.commit()
+ 
+        return redirect('/dashboard')
+    return render_template('addCase.html', companyDetails = companyDetails, freelancersDetails=freelancersDetails)
 
 
 if __name__ == "__main__":

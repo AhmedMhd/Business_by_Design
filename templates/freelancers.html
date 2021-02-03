@@ -19,7 +19,7 @@
 
                 <!-- Start Filters Section-->
                 <div class="main-filters">
-                    <form action="" class="search">
+                    <form action="/freelancers" method="POST" class="search">
                         <input type="text" placeholder="Search" name="search" class="box">
                         <!-- <span class="icon">
                             <i class="fas fa-search"></i>
@@ -69,7 +69,7 @@
                                 <td data-label="Location">{{freelancer.location}}</td>
                                 <td data-label="Rating">{{freelancer.rating}}</td>
                                 <td data-label="Profile" class="profile">
-                                    <a href="/profilesFreelancer/{{freelancer.id}}">
+                                    <a href="/profilesFreelancer/{{freelancer.name}}">
                                         <i class="far fa-id-badge"></i>
                                     </a>
                                 </td>
