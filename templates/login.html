@@ -1,6 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+<title>Login</title>
+{% endblock %}
+
+{% block styles %}
+{{super()}}
     <!-- Meta Tag -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,45 +17,26 @@
     <!-- Font -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-    <!-- Favicon  -->
-    <!-- <link rel="icon" href="../assets/images/favicon-16x16.png" sizes="16x16"> -->
-    <!-- Title -->
-    <title>Login</title>
-</head>
-<body>
-    
+{% endblock %}
 
-    <div class="container-login">
-        <div class="login-left">
-            <!-- <a href="signUp.html">Create an account.</a> -->
-            <!-- Form -->
-             <form action="{{ url_for('login')}}" method="post" autocomplete="off">
-                <div class="title">
-                    <h1>LOGIN</h1>
-                    <span>Please login to your account.</span>
-                </div>
-                 <label for="email">Email</label>
-                 <input type="email" name="email" id="email" placeholder="ahmed1@gmail.com" required>
-
-                 <label for="Password">Password</label>
-                 <input type="password" name="password" id="Password" placeholder="*******************" minlength="8" required>
-                
-                <!-- <div class="ch-fo">
-                    <label for="Keep">
-                        <input type="checkbox" id="Keep" name="Keep">
-                        Keep me logged in
-                    </label>
-                    <a href="#" class="forgot">Forgot your password?</a>
-                </div> -->
-
-                 <button type="submit">LOGIN</button>
-             </form>
-             <!-- <p class="forgot">New to this page? <a class="worddark" href="{{ url_for('register')}}">Register here</a></p> -->
+{% block content %}
+<div class="container-login">
+  <div class="login-left">
+      <form method="POST" action="/login" autocomplete="off">
+        <div class="title">
+          <h1>LOGIN</h1>
+          <span>Please login to your account.</span>
         </div>
+        {{ form.hidden_tag() }}
+        {{ wtf.form_field(form.username) }}
+        {{ wtf.form_field(form.password) }}
+        {{ wtf.form_field(form.remember) }}
+        <button type="submit">LOGIN</button>
+     </form>
+             
+  </div>
         <div class="img-right"> 
             <img src="../static/images/undraw_business_deal_cpi9.svg" alt="login image" draggable="false" >
         </div>
-    </div>
-
-</body>
-</html>
+</div>
+{% endblock %}

@@ -33,9 +33,27 @@ Technologies
 <br>
 
 # How to run the program
-in terminal
--	python
--	from app import db
--	db.create_all()
--	python app.py
+In terminal:
+
+-   install virtual environment
+`pip install virtualenv`
+-   create your virtual environment, here it's called (myenv)
+`virtualenv myenv`
+-   activate your virtual environment:
+    windows
+`myenv\Scripts\activate`
+    Mac OS / Linux
+`source myenv/bin/activate`
+-   install the requirements library in your directory
+`pip install -r requirements.txt`
+
+Then, (to create new database)
+-	`python`
+-	`from app import db`
+-	`db.create_all()`
+-	`python app.py`
+
+or(if database already exist) :
+-   `python app.py`
+
 

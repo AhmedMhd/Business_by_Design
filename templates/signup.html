@@ -1,0 +1,52 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+Sign Up
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Login Style -->
+<link rel="stylesheet" href="../static/css/register.css"> 
+<!-- shared-ui -->
+<link rel="stylesheet" href="../static/css/shared-ui.css">
+<!-- Fontawesome -->
+<link rel="stylesheet" href="../static/css/all.min.css"> 
+<!-- Font -->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+<!-- Favicon  -->
+<link rel="icon" href="../static/images/favicon.ico" sizes="16x16">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+
+          <!-- Start Main -->
+          <main>
+  <div class="main-container">
+    <section class="register">
+      <h1>Register</h1>
+      <span>Create your account.</span>
+      <!-- Form -->
+  <form class="form-signin" autocomplete="off" method="POST" action="/signup">
+    <h2 class="form-signin-heading">Sign Up</h2>
+    {{ form.hidden_tag() }}
+    {{ wtf.form_field(form.username) }}
+    {{ wtf.form_field(form.email) }}
+    {{ wtf.form_field(form.password) }}
+    <button type="submit">SIGN UP</button>
+  </form>
+  </section>
+  </div>
+</main>
+<!-- End Main -->
+
+
+</div>
+
+<script src="../static/js/js2.js"></script>
+{% endblock %}
