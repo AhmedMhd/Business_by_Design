@@ -18,7 +18,7 @@
                     </div>
                     <h2>"{{companyDetails.name}}"</h2>
                     <p>"{{companyDetails.category}}"</p>
-                    <a href="/user/{{companyDetails.id}}" class="edit-profile-btn">Edit Profile</a>
+                    <a href="/editCompany/{{companyDetails.id}}" class="edit-profile-btn">Edit Profile</a>
                 </div>
                 <!-- End Profile Info -->
 
@@ -41,6 +41,7 @@
 
                 <!-- START UNDER WORK -->
                 <div class="tabContent underWork-container" id="tab1">
+                    {% for case in casesDetails %}
                     <table class="table">
                             <thead>
                                 <th>Work Name</th>
@@ -50,10 +51,10 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>Lorem Ipsum is simply dummy text </td>
-                                    <td>Ahmed Mohammed</td>
-                                    <td>Company X</td>
-                                    <td>11/01/2021</td>
+                                    <td>{{case.name}}</td>
+                                    <td>{{case.clientName}}</td>
+                                    <td>{{case.providerName}}</td>
+                                    <td>{{case.date}}</td>
                                 </tr>
                                 <tr>
                                     <td colspan="4" class="progress">
@@ -120,92 +121,173 @@
                                 </tr>
                             </tbody>
                     </table>
+                    {% endfor  %}
                 </div>
                 <!-- END UNDER WORK -->
                 
-                <!-- START UNDER WORK -->
-                <div class="tabContent underWork-container" id="tab1">
+                <!-- Start  Previous works-->
+                <div class="tabContent underWork-container" id="tab2">
                     <table class="table">
-                            <thead>
-                                <th>Work Name</th>
-                                <th>Client name</th>
-                                <th>Service provider</th>
-                                <th>Date</th>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Lorem Ipsum is simply dummy text </td>
-                                    <td>Ahmed Mohammed</td>
-                                    <td>Company X</td>
-                                    <td>11/01/2021</td>
-                                </tr>
-                                <tr>
-                                    <td colspan="4" class="progress">
-                                        <h3>Progress</h3>
-                                        <form class="checkbox">
-                                            <!-- <input type="checkbox" id="check_box_01" name="check_box_01" value="1">
-                                            <label for="check_box_01">25%</label><br>
-    
-                                            <input type="checkbox" id="check_box_02" name="check_box_02" value="2">
-                                            <label for="check_box_02">50%</label><br>
-    
-                                            <input type="checkbox" id="check_box_03" name="check_box_03" value="3">
-                                            <label for="check_box_03">75%</label><br>
-    
-                                            <input type="checkbox" id="check_box_04" name="check_box_04" value="4">
-                                            <label for="check_box_04">100%</label><br> -->
-    
-                                            <!-- <input type="range" min="0" max="100" value="0"> -->
-                                            <div class="range">
-                                                <div class="sliderValue">
-                                                <span id="per">100</span>
-                                                </div>
-                                                <div class="field">
-                                                    <div class="value left">0</div>
-                                                    <input type="range" id="range" min="0" max="100" value="100" steps="1">
-                                                    <div class="value right">100</div>
-                                                </div>
+                        <thead>
+                            <th>Work Name</th>
+                            <th>Client name</th>
+                            <th>Service provider</th>
+                            <th>Date</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Mobile application design</td>
+                                <td>Zubaida Bilal</td>
+                                <td>Company y</td>
+                                <td>11/01/2021</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" class="progress">
+                                    <h3>Progress</h3>
+                                    <form class="checkbox">
+                                        <!-- <input type="checkbox" id="check_box_01" name="check_box_01" value="1">
+                                        <label for="check_box_01">25%</label><br>
+
+                                        <input type="checkbox" id="check_box_02" name="check_box_02" value="2">
+                                        <label for="check_box_02">50%</label><br>
+
+                                        <input type="checkbox" id="check_box_03" name="check_box_03" value="3">
+                                        <label for="check_box_03">75%</label><br>
+
+                                        <input type="checkbox" id="check_box_04" name="check_box_04" value="4">
+                                        <label for="check_box_04">100%</label><br> -->
+
+                                        <!-- <input type="range" min="0" max="100" value="0"> -->
+                                        <div class="range">
+                                            <div class="sliderValue">
+                                              <span id="per">100</span>
                                             </div>
-                                        </form>
-                                        
-                                        <!-- <div class="progress_bar">
-                                            <div class="progress_inner">100%</div>
-                                        </div> -->
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="4" class="rating-review">
-                                        <h3>Rating & Review</h3>
-                                        <div class="rating-review-content">
-                                            <form class="rating-review-form">
-                                                <div class="star-widget">
-                                                    <input type="radio" name="rate" id="rate-5">
-                                                    <label for="rate-5" class="fas fa-star"></label>
-    
-                                                    <input type="radio" name="rate" id="rate-4">
-                                                    <label for="rate-4" class="fas fa-star"></label>
-    
-                                                    <input type="radio" name="rate" id="rate-3">
-                                                    <label for="rate-3" class="fas fa-star"></label>
-    
-                                                    <input type="radio" name="rate" id="rate-2">
-                                                    <label for="rate-2" class="fas fa-star"></label>
-    
-                                                    <input type="radio" name="rate" id="rate-1">
-                                                    <label for="rate-1" class="fas fa-star"></label>
-                                                </div>
-    
-                                                <textarea name="" id="" rows="5" cols="35" placeholder="Write your review here"></textarea>
-    
-                                                <button type="submit" class="btn">Done</button>
-                                            </form>
+                                            <div class="field">
+                                                <div class="value left">0</div>
+                                                <input type="range" id="range" min="0" max="100" value="100" steps="1">
+                                                <div class="value right">100</div>
+                                            </div>
                                         </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                    </table>
+                                    </form>
+                                    
+                                    <!-- <div class="progress_bar">
+                                        <div class="progress_inner">100%</div>
+                                    </div> -->
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" class="rating-review">
+                                    <h3>Rating & Review</h3>
+                                    <div class="rating-review-content">
+                                        <form class="rating-review-form">
+                                            <div class="star-widget">
+                                                <input type="radio" name="rate" id="rate-5">
+                                                <label for="rate-5" class="fas fa-star"></label>
+
+                                                <input type="radio" name="rate" id="rate-4">
+                                                <label for="rate-4" class="fas fa-star"></label>
+
+                                                <input type="radio" name="rate" id="rate-3">
+                                                <label for="rate-3" class="fas fa-star"></label>
+
+                                                <input type="radio" name="rate" id="rate-2">
+                                                <label for="rate-2" class="fas fa-star"></label>
+
+                                                <input type="radio" name="rate" id="rate-1">
+                                                <label for="rate-1" class="fas fa-star"></label>
+                                            </div>
+
+                                            <textarea name="" id="" rows="5" cols="35" placeholder="Write your review here"></textarea>
+
+                                            <button type="submit" class="btn">Done</button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                   </table>
+
+                   <table class="table">
+                       <thead>
+                           <th>Work Name</th>
+                           <th>Client name</th>
+                           <th>Service provider</th>
+                           <th>Date</th>
+                       </thead>
+                       <tbody>
+                           <tr>
+                               <td>Mobile application design</td>
+                               <td>Zubaida Bilal</td>
+                               <td>Company y</td>
+                               <td>11/01/2021</td>
+                           </tr>
+                           <tr>
+                               <td colspan="4" class="progress">
+                                   <h3>Progress</h3>
+                                   <form class="checkbox">
+                                       <!-- <input type="checkbox" id="check_box_01" name="check_box_01" value="1">
+                                       <label for="check_box_01">25%</label><br>
+
+                                       <input type="checkbox" id="check_box_02" name="check_box_02" value="2">
+                                       <label for="check_box_02">50%</label><br>
+
+                                       <input type="checkbox" id="check_box_03" name="check_box_03" value="3">
+                                       <label for="check_box_03">75%</label><br>
+
+                                       <input type="checkbox" id="check_box_04" name="check_box_04" value="4">
+                                       <label for="check_box_04">100%</label><br> -->
+
+                                       <!-- <input type="range" min="0" max="100" value="0"> -->
+                                       <div class="range">
+                                           <div class="sliderValue">
+                                             <span id="per">100</span>
+                                           </div>
+                                           <div class="field">
+                                               <div class="value left">0</div>
+                                               <input type="range" id="range" min="0" max="100" value="100" steps="1">
+                                               <div class="value right">100</div>
+                                           </div>
+                                       </div>
+                                   </form>
+                                   
+                                   <!-- <div class="progress_bar">
+                                       <div class="progress_inner">100%</div>
+                                   </div> -->
+                               </td>
+                           </tr>
+                           <tr>
+                               <td colspan="4" class="rating-review">
+                                   <h3>Rating & Review</h3>
+                                   <div class="rating-review-content">
+                                       <form class="rating-review-form">
+                                           <div class="star-widget">
+                                               <input type="radio" name="rate" id="rate-5">
+                                               <label for="rate-5" class="fas fa-star"></label>
+
+                                               <input type="radio" name="rate" id="rate-4">
+                                               <label for="rate-4" class="fas fa-star"></label>
+
+                                               <input type="radio" name="rate" id="rate-3">
+                                               <label for="rate-3" class="fas fa-star"></label>
+
+                                               <input type="radio" name="rate" id="rate-2">
+                                               <label for="rate-2" class="fas fa-star"></label>
+
+                                               <input type="radio" name="rate" id="rate-1">
+                                               <label for="rate-1" class="fas fa-star"></label>
+                                           </div>
+
+                                           <textarea name="" id="" rows="5" cols="35" placeholder="Write your review here"></textarea>
+
+                                           <button type="submit" class="btn">Done</button>
+                                       </form>
+                                   </div>
+                               </td>
+                           </tr>
+                       </tbody>
+                  </table>
                 </div>
-                <!-- END UNDER WORK -->
+
 
                 <div class="tabContent" id="tab2">
                     <!-- <h3>Previous works</h3> -->

@@ -17,24 +17,28 @@
                 <!-- End Title -->
 
                 <!-- Start Form -->
-                <form class="form-section">
+                <form action="{{url_for('addCase')}}" method="POST" class="form-section" >
                     <div class="input-left">
                         <label for="workName">Work Name *</label>
-                        <input type="text" id="workName" required>
+                        <input name="name" type="text" id="workName" placeholder="Lorem Ipsum is simply" >
 
                         <label for="clientName">Client name *</label>
-                        <input type="text" id="clientName" required>
+                        <select name="clientName" id="clientName" class="category">
+                        {% for company in companyDetails %}
+                        <option type="text" placeholder="Company X" value="{{ company.name }}">{{ company.name }}</option>
+                        {% endfor %}
+                        </select>
 
                         <label for="providerName">Provider name *</label>
-                        <select id="providerName" class="category">
-                        {% for company in companyDetails %}
-                        <option type="text"  placeholder="Freelancer X" value="{{ company.id }}">{{ company.name }}</option>
+                        <select name="providerName" id="providerName" class="category">
+                        {% for freelancer in freelancersDetails %}
+                        <option type="text"  placeholder="Freelancer X" value="{{ freelancer.name }}">{{ freelancer.name }}</option>
                         {% endfor %}
                         </select>
 
 
                         <label for="">Date *</label>
-                        <input type="date" id="date" name="date" required>
+                        <input name="date" type="date" id="date" >
 
                     <button type="submit">Add</button>
                 </form>
