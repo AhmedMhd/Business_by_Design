@@ -109,7 +109,8 @@ input::placeholder {
     margin-top: 20px;
 }
 
-.pagination a {
+.pagination .arrow-left, 
+.arrow-right {
     display: flex;
     justify-content: center;
     align-items: center;

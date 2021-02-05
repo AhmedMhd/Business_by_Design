@@ -108,19 +108,6 @@ input::placeholder {
     margin-top: 20px;
 }
 
-/* .pagination a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 19px;
-    height: 19px;
-    color: var(--lightPurple);
-    font-size: 20px;
-    border: 1px solid var(--lightPurple);
-    border-radius: 50%;
-} */
-
-
 .pagination .arrow-left, 
 .arrow-right {
     display: flex;
